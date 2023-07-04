@@ -2,14 +2,15 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, useNavigate, useRouteLoaderData } from "react-router-dom";
+import { NavLink, useNavigate} from "react-router-dom";
 import classes from './menu.module.css'
 import { signout} from "../auth/auth";
+import { isAuthenticated } from "../auth/auth";
 
 
 export default function Menu() {
     const navigate = useNavigate();
-    const isAuth = useRouteLoaderData('token');
+    const isAuth = isAuthenticated();
     const {user: {role}} = JSON.parse(isAuth)
     function logout(){
         signout( () => {

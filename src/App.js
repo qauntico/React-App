@@ -12,7 +12,7 @@ import AdminPrivateRoute from './auth/AdminPrivateRoute';
 import Dashboard from './user/UserDashboard'
 import Admin from './user/AdminDashboard';
 import { ErrorPage } from './ErrorPage/ErrorPage';
-import { isAuthenticated } from './auth/auth';
+import {loader as shopLoader} from './core/shop'
 import {createBrowserRouter,RouterProvider } from 'react-router-dom';
 import {loader as loadCategories} from './admin/AddProduct'
 import {loader as loadProductLoader} from './core/Home'
@@ -21,7 +21,7 @@ function App() {
   const router = createBrowserRouter([{
     path: '/', element: <RouterRootLayout />,
     id: 'token',
-    loader: isAuthenticated,
+    loader: shopLoader,
     errorElement: <ErrorPage  />,
     children: [
       {index: true, 
