@@ -4,24 +4,19 @@ import { useLoaderData } from "react-router-dom";
 export default function CheckBox({handlefilters}){
     const [checked, setChecked] = useState([]);
     const data = useLoaderData();
-    useEffect(() => {
-        //we are passing in the filtes through useEffect to that we wait for 
-        //for the state to be rendered first if we could do it in the handlechange method by that time the state will not
-        //yet be updated only after that component is re rendered that the state is re rendered
-        handlefilters(checked)
-      }, [checked]);
+   
     
     function handleChange(id) {
         //this is checking if that category is already in that array
-        if(!checked.includes(id)){
-            setChecked(previous => 
-                [...previous,id]
-            )
+        const currentCategoryId = checked.indexOf(id);
+        const checkState = [...checked];
+        if(!checkState.includes(id)){
+            checkState.push(id)
         }else{
-            setChecked(previous => 
-                    previous.filter(item => item !== id)
-                )
+            checkState.splice(currentCategoryId, 1)
         }
+        setChecked(checkState)
+        handlefilters(checkState)
         //console.log(checked)
     }  
     return data.map((category,index) => (

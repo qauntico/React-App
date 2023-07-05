@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 export async function getProduct(sortBy){
     const response = await fetch(`http://localhost:8080/api/products/?sort=${sortBy}&order=desc&amount=6`, {
         method: 'GET',
@@ -34,3 +35,21 @@ export async function getFilteredProducts(skip,limit,filters = {}){
             return result
         }
 };
+
+export async function searchProduct(params){
+    //this queryString package contains a method that takes a object and converts it to a query string
+    const query = queryString.stringify(params)
+    console.log(query)
+    const response = await fetch(`http://localhost:8080/api/products/search?${query}`, {
+        method: 'GET',
+        }).catch(err => {
+            console.log(err)
+        });
+        const result = await response.json();
+        if(response.ok){
+            return result
+        }else{
+            return result
+        }
+};
+

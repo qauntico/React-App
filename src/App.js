@@ -15,7 +15,7 @@ import { ErrorPage } from './ErrorPage/ErrorPage';
 import {loader as shopLoader} from './core/shop'
 import {createBrowserRouter,RouterProvider } from 'react-router-dom';
 import {loader as loadCategories} from './admin/AddProduct'
-import {loader as loadProductLoader} from './core/Home'
+
 
 function App() {
   const router = createBrowserRouter([{
@@ -26,7 +26,7 @@ function App() {
     children: [
       {index: true, 
       element: <Home />,
-      loader: loadProductLoader},
+      loader: loadCategories},
       {path: '/shop',
       element: <Shop />,
       loader: loadCategories},

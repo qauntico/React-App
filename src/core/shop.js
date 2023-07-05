@@ -16,9 +16,9 @@ export default function Shop(){
     const [skip, setSkip] = useState(0);
     const [data, setData] = useState([]);
     const [size, setSize] = useState(0);
-    const [state, setState] = useState(false);
+
     //this loadFilterProducts is what makes the request to the api
-    function loadFilterProducts(newFilters){
+    const  loadFilterProducts = (newFilters) => {
         getFilteredProducts(skip, limit, newFilters).then(result => {
             if(result.error){
                 console.log(data.error)
@@ -31,9 +31,9 @@ export default function Shop(){
         })
     };
     useEffect(() => {
-        setData(shopData.data)
-        setSize(shopData.size)
-    },[shopData])
+        setData(shopData.data);
+        setSize(shopData.size);
+    },[shopData]);
 
     function handlefilters(filters, sort){
         const newFilters = {...myFilters};//creates a new  object an pass in the default object
@@ -45,7 +45,7 @@ export default function Shop(){
         
         setMyFilters(newFilters)
         loadFilterProducts(myFilters.filters)
-    } 
+    };
     //this method gets the actual price ranges from the price object base on the _id received
     function handlePrice(value){
         const data = price;
@@ -55,9 +55,9 @@ export default function Shop(){
             }
         }
         return null
-    }  
+    };
 
-    function loadMore() {
+    function loadMore(){
         let toSkip = skip + limit
         getFilteredProducts(toSkip, limit, myFilters.filters).then(result => {
             if(result.error){
@@ -68,17 +68,18 @@ export default function Shop(){
                 setSkip(toSkip)
             }
         })
-    }
+    };
 
  
-    function loadMoreButton(){
+   function  loadMoreButton(){
+        console.log(size)
         return (
             size > 0 && size >= limit && 
             (
                 <button onClick={loadMore}>load more</button>
             )
         )
-    }
+    };
 
 
     return <>
