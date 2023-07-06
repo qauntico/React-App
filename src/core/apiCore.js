@@ -52,4 +52,17 @@ export async function searchProduct(params){
             return result
         }
 };
+export async function relatedProduct(productId){
+    const response = await fetch(`http://localhost:8080/api/products/related/${productId}`, {
+        method: 'GET',
+        }).catch(err => {
+            console.log(err)
+        });
+        const result = await response.json();
+        if(response.ok){
+            return result
+        }else{
+            return result
+        }
+};
 
