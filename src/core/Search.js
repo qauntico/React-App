@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { searchProduct } from "./apiCore";
 import { useLoaderData } from "react-router-dom";
-import Cart from "./cart";
+import Cart from "./card";
 
 export default function Search(){
     const loadedCategories = useLoaderData()
@@ -37,7 +37,7 @@ export default function Search(){
     function searchedProducts(results = []){
         return <div>
             {results.map((product,indx) => (
-                <Cart key={indx} name={product.name} description={product.description} price={product.price} />
+                <Cart key={indx} product={product} />
             ))}
         </div>
     }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {  json } from "react-router-dom";
 import { getProduct } from "./apiCore";
-import Cart from "./cart";
+import Cart from "./card";
 import Search from "./Search";
 
 export default function Home() {
@@ -36,11 +36,11 @@ export default function Home() {
         <Search />
     <h1>Category by sales</h1>
         {productBySales.map(product => (
-            <Cart key={product._id} id={product._id} name={product.name} description={product.description} price={product.price} />
+            <Cart key={product._id} product={product} id={product._id} name={product.name} description={product.description} price={product.price} />
         ))}
     <h1>category by date</h1>
         {newProdcts.map(product => (
-            <Cart key={product._id} name={product.name} description={product.description} price={product.price} />
+            <Cart key={product._id} product={product} name={product.name} description={product.description} price={product.price} />
         ))}
     </div>
 }

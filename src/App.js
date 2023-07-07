@@ -5,6 +5,7 @@ import Home from './core/Home'
 import Signin from './user/Singin';
 import Signup from './user/Signup';
 import Shop from './core/shop';
+import { ShoppingCart } from './core/cart';
 import ProductDetails from './core/product';
 import CreateCategory from './admin/AddCategory';
 import CreateProduct from './admin/AddProduct';
@@ -35,6 +36,8 @@ function App() {
       {path: '/product/:productId',
       loader: productDetail,
       element: <ProductDetails />},
+      {path: '/Cart',
+      element: <ShoppingCart />},
       {path: '/signin',
       element: <Signin />},
       {path: '/signup',

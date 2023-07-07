@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import Cart from "./cart";
+import Cart from "./card";
 import CheckBox from "./checkbox";
 import { useRouteLoaderData } from "react-router-dom";
 import { price } from "./fixedPrices";
