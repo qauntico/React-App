@@ -12,6 +12,7 @@ export async function getProduct(sortBy){
             return result
         }
 };
+//request to get filer products
 export async function getFilteredProducts(skip,limit,filters = {}){
     const data = {
         limit,
@@ -35,7 +36,7 @@ export async function getFilteredProducts(skip,limit,filters = {}){
             return result
         }
 };
-
+//request to perform product search
 export async function searchProduct(params){
     //this queryString package contains a method that takes a object and converts it to a query string
     const query = queryString.stringify(params)
@@ -52,6 +53,7 @@ export async function searchProduct(params){
             return result
         }
 };
+//request to get related products
 export async function relatedProduct(productId){
     const response = await fetch(`http://localhost:8080/api/products/related/${productId}`, {
         method: 'GET',
@@ -65,4 +67,44 @@ export async function relatedProduct(productId){
             return result
         }
 };
+
+export async function getBrainTreeToken(userId, token){
+    const response = await fetch(`http://localhost:8080/api/braintree/getToken/${userId}`, {
+        method: 'GET',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+        },
+        }).catch(err => {
+            console.log(err)
+        });
+        const result = await response.json();
+        if(response.ok){
+            return result
+        }else{
+            return result
+        }
+};
+
+export async function processPayment(userId, token,paymentData){
+    const response = await fetch(`http://localhost:8080/api/braintree/payment/${userId}`, {
+        method: 'POST',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(paymentData)
+        }).catch(err => {
+            console.log(err)
+        });
+        const result = await response.json();
+        if(response.ok){
+            return result
+        }else{
+            return result
+        }
+};
+
 

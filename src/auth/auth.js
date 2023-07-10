@@ -30,8 +30,8 @@ export const signout = async (next) => {
     if (typeof window != "undefined") {
         localStorage.removeItem('jwt');
         next()
-        return fetch('http://localhost:8080/api/signout', {
-            method: 'GET',
+        return fetch('http://localhost:8080/api/logout', {
+            method: 'POST',
 
         }).then(response => {
             console.log("signout",response)

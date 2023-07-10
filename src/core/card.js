@@ -5,7 +5,7 @@ import { addItem, updateItem,removeItem } from "./cartHelpers";
 
 
 
-export default function Cart({product, update = false, showRemoveItemButton = false}){
+export default function Cart({product, update = false, showRemoveItemButton = false,setRun = f => f,run = undefined}){
     const [redirect, setRedirect] = useState(false);
     const [count, setCount] = useState(product.count);
     const navigate = useNavigate();
@@ -20,6 +20,7 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
         }
     }
     const handleChange = productId => event => {
+        setRun(!run)
         setCount(event.target.value < 1 ? 1 : event.target.value)
         if(event.target.value >= 1){
            updateItem(productId, event.target.value) 
@@ -34,7 +35,11 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
     function removeItemButton(showButton){
         return (
             showButton && (
-                <button onClick={() => removeItem(product._id)}>remove Product</button>
+                <button 
+                onClick={() => 
+                    {setRun(!run) 
+                    removeItem(product._id)}}
+                >remove Product</button>
             )
         )
     }

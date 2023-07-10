@@ -6,14 +6,15 @@ import CheckOut from "./checkout";
 
 export function ShoppingCart(){
     const [items, setItems] = useState([]);
+    const [run, setRun] = useState(false);
     useEffect(() => {
         setItems(getCart())
-    },[getCart()])
+    },[run])
     function showItems(items){
         return (
             <div>
                 {items.map((product,i)=>(
-                <Cart key={i} product={product} update={true} showRemoveItemButton={true}/>
+                <Cart key={i} product={product} update={true} showRemoveItemButton={true} run={run} setRun={setRun}/>
                 ))} 
             </div>  
         )
