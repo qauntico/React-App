@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import { isAuthenticated } from "../auth/auth";
 import { Link } from "react-router-dom";
-import { getBrainTreeToken, processPayment } from "./apiCore";
+import { createOrder, getBrainTreeToken, processPayment } from "./apiCore";
 import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
 
@@ -37,6 +37,11 @@ export default function CheckOut({product}){
             return currentValue + nextValue.count * nextValue.price
         },0)
     }
+
+    function handleAddress(event){
+        console.log(event.target.value)
+        setData({...data,address:event.target.value})
+    }
     function buy(){
         //we have to send nonce to server
         //none = data.instance.requestPaymentMethod()
@@ -50,7 +55,15 @@ export default function CheckOut({product}){
             };
             processPayment(userId, token, paymentData)
                     .then(response => {
-                        setData({...data, success: response.success})
+                        console.log(data.address)
+                        const createOrderData = {
+                            products: product,
+                            transaction_id: response.transaction_id,
+                            amount: response.transaction.amount,
+                            address: data.address
+                        }
+                        createOrder(userId,token,createOrderData);
+                        setData({...data, success: response.success});
                         emptyCart(() => {
                             console.log("this was a success")
                         })
@@ -70,6 +83,14 @@ export default function CheckOut({product}){
         return <div onBlur={() => setData({...data,error: ''})}>
             {data.clientToken != null && product.length > 0 ? (
                 <div>
+                    <div className="gorm-group mb-3">
+                        <label className="text-muted">Delivery address: </label>
+                        <textarea 
+                            onChange={handleAddress}
+                            className="form-control"
+                            value={data.address}
+                            placeholder="Type your delivery address here..."/>
+                    </div>
                     <DropIn options={{
                         authorization: data.clientToken 
                     }} onInstance={instance => (data.instance = instance)} />

@@ -17,7 +17,8 @@ import { ErrorPage } from './ErrorPage/ErrorPage';
 import {loader as shopLoader} from './core/shop'
 import {createBrowserRouter,RouterProvider } from 'react-router-dom';
 import {loader as loadCategories} from './admin/AddProduct';
-import {loader as productDetail} from './core/product'
+import {loader as productDetail} from './core/product';
+import Orders from './admin/Order';
 
 
 function App() {
@@ -53,7 +54,9 @@ function App() {
             element: <CreateCategory />},
             {path: 'create/product', 
             element: <CreateProduct />,
-            loader: loadCategories}
+            loader: loadCategories},
+            {path: 'orders',
+            element: <Orders />}
       ]},
       
 

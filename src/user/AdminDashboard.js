@@ -10,6 +10,7 @@ const Admin = () => {
         return <>
             <Link to='create/category'>create Category </Link>
             <Link to='create/product'>create Products</Link>
+            <Link to='orders'>view Orders</Link>
         </>
     }
     return <>
