@@ -1,15 +1,20 @@
+import { useEffect } from "react";
 import { isAuthenticated } from "./auth";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function PrivateRoute({element: Element}){
-    const isAuth = isAuthenticated();
-    const navigate = useNavigate();
-    if(!isAuth) {
-        console.log('yes')
-        //the replace true method set so that we replace the current url in the browser history rather than
-        //creating a new one 
-        return navigate('/signin', {replace: true })
-    }else{
-        return <Element />
+export default function PrivateRoute({ element: Element }) {
+  const isAuth = isAuthenticated();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuth) {
+      navigate("/signin", { replace: true });
     }
-};
+  }, [isAuth, navigate]);
+
+  if (isAuth) {
+    return <Element />;
+  }
+
+  return null;
+}

@@ -14,7 +14,7 @@ const Admin = () => {
         </>
     }
     return <>
-        <p style={{marginTop: '200px'}}>{name} {history}</p>
+        <p style={{marginTop: '200px'}}>{name}</p>
         {userLinks()}
     </>
 };

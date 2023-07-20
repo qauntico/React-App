@@ -1,6 +1,6 @@
 
 .heading a{
-    margin-right: 10px;
+    margin-right: 3px;
     font-weight: bold;
     color: #636e72;
     padding: 10px;
@@ -11,9 +11,31 @@
     font-weight: 900;
 }
 .container {
-    padding:20px 20px;
+    padding:25px 20px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.heading a:hover, .active {
+.heading .hov:hover, .active {
     border-bottom: 2px solid #636e72;
+}
+.button {
+    position: relative;
+    top: 2px;
+    color: white;
+    background-color:#be688f;
+    border:none;
+    border-radius: 10px;
+    padding: 7px 10px;
+}
+.button:hover {
+    background-color: #612741;
+}
+.cart{
+    margin-right: 3px;
+    font-weight: bold;
+    color: #636e72;
+    padding: 10px;
+}
+.cartButton {
+    position: relative;
+    top: 5px;
 }

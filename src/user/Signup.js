@@ -9,16 +9,27 @@ import { Container } from "react-bootstrap";
 import classes from './Signup.module.css';
 import { useRef} from "react";
 import { User } from '../auth/auth';
+import ErrorMessage from '../components/errorAtlert';
+import SuccessMessage from '../components/successAtlert';
 
 
 export default function Signup() {
     const [validated, setValidated] = useState(false);
-
+    const [condition, setCondition] = useState({
+      error: '',
+      success: '',
+      loading: false,
+      password_match: true
+    });
+    //show password statehandle
+    const [showPassword, setShowPassword] = useState(false);
     const name = useRef();
     const email = useRef();
     const password = useRef();
+    const confirm_password = useRef();
     const about = useRef();
-    const check = useRef();
+
+    //send form data method
     function SendData(){
         var data = {
             name : name.current.value,
@@ -26,45 +37,81 @@ export default function Signup() {
             password: password.current.value,
             about: about.current.value
         };
-        
-        if (data.name && data.email && data.password && check.current.checked) {
-           User(data, "signup").then(result => {
-                if (result.errors){
-                    console.log(result.errors)
-                }else{
-                    setTimeout(()=> {
-                        name.current.value = ""
-                        email.current.value = ""
-                        password.current.value = ""
-                        about.current.value = ""
-                        setValidated(false)
-                    },2000);
-                }    
-           })
-              
-        }else{
-            return 
-        };
+        if (password.current.value !== confirm_password.current.value) {
+          confirm_password.current.setCustomValidity("Passwords do not match");
+        } else {
+          setCondition({...condition,password_match: true});
+          // Passwords match, remove any previous error message
+          confirm_password.current.setCustomValidity('');
+          // The form is valid, so you can call your method here
+          setCondition({...condition,loading: true});
+          User(data, "signup").then(result => {
+            if (result.error){
+                setCondition({...condition, error: result.error})
+                console.log(result.error)
+            }else{
+                name.current.value = ""
+                email.current.value = ""
+                password.current.value = ""
+                about.current.value = ""
+                confirm_password.current.value=""
+                setValidated(false)
+                setCondition({...condition, error: '', success: result.success})
+            }    
+          })
+        }
+  
     }
     
-    const handleSubmit = (event) => {
+    //form submit method
+    const handleSubmit = (event) => { 
         const form = event.currentTarget;
         event.preventDefault();
         if (form.checkValidity() === false) {
-            //event.preventDefault();
+            setCondition({...condition,loading: false});
             event.stopPropagation(); 
+        }else{
+          SendData();
         }
-        SendData();
-        setValidated(true);  
+        setValidated(true); 
+        
     };
+
+    //Makes sure the confirm password field always has it default state
+    function handleConfirmPassword(){
+      setCondition({...condition, password_match: true});
+      confirm_password.current.setCustomValidity('');
+    }
+
+    //show password method
+    function handleShowPassword(){
+      setShowPassword(prev => !prev)
+    }
     
- 
-    const v = process.env.REACT_APP_API_KEY
-    return <Container>
-      <Form noValidate validated={validated} onSubmit={handleSubmit} className={classes.form}>
+    //password field errors
+    function passwordMatch(){
+        if(condition.password_match){
+          return <>
+                  <Form.Control.Feedback type="invalid">
+                    PLease Enter Password.
+                  </Form.Control.Feedback>
+                </>
+        }else{
+          return <>
+                  <Form.Control.Feedback type="invalid">
+                    Password Don't Match
+                  </Form.Control.Feedback>
+                </>
+        }
+    }
+  
+    return <Container style={{paddingTop: '120px'}} className={classes.background}>
+      {condition.error && <ErrorMessage message={condition.error}/> }
+      {condition.success && <SuccessMessage message={condition.success}/> }
+      <Form noValidate validated={validated} onSubmit={handleSubmit} className={classes.form} >
       <Row className="mb-3">
         <Form.Group as={Col} md={12} controlId="validationCustom01">
-          <Form.Label>Name{v}</Form.Label>
+          <Form.Label>Name</Form.Label>
           <Form.Control
             required
             type="text"
@@ -98,11 +145,22 @@ export default function Signup() {
       <Row className="mb-3">
         <Form.Group as={Col} md={12} controlId="validationCustom03">
           <Form.Label>Password</Form.Label>
-          <Form.Control ref={password} type="password" placeholder="password" required />
+          <Form.Control ref={password} type={ !showPassword ? 'password' : 'text' } placeholder="password" required />
           <Form.Control.Feedback type="invalid">
-            PLease Enter a Password.
+            PLease Enter Password.
           </Form.Control.Feedback>
         </Form.Group>
+        <Form.Group as={Col} md={12} controlId="validationCustom03">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control ref={confirm_password} type={ !showPassword ? 'password' : 'text' } placeholder="password" onChange={handleConfirmPassword} required />
+          {passwordMatch()}
+        </Form.Group>
+        <Form.Group as={Col} md={12} controlId="validationCustom03">
+        <Form.Check
+          label="show Password"
+          onChange={handleShowPassword}
+        />
+      </Form.Group>
         <Form.Group as={Col} md={12}  controlId="validationCustom03">
         <Form.Label>About</Form.Label>
             <FloatingLabel  controlId="floatingTextarea2" label="About">
@@ -118,13 +176,14 @@ export default function Signup() {
       <Form.Group className="mb-3">
         <Form.Check
           required
-          ref={check}
           label="Agree to terms and conditions"
           feedback="You must agree before submitting."
           feedbackType="invalid"
         />
       </Form.Group>
-        <Button type="submit">Create Account</Button>
+        <Button type="submit" disabled={condition.loading} variant="secondary">
+            {!condition.loading ? 'Create Account' : 'Creating Account ......'}
+        </Button>
         </Form>
     </Container>
 };

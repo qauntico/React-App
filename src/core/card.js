@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import ShowImage from "./showIimage";
 import { Link,useNavigate } from "react-router-dom";
 import { addItem, updateItem,removeItem } from "./cartHelpers";
-
-
+import CartContex from "../Contex/Cart-Contex";
 
 export default function Cart({product, update = false, showRemoveItemButton = false,setRun = f => f,run = undefined}){
+    const data = useContext(CartContex);
     const [redirect, setRedirect] = useState(false);
     const [count, setCount] = useState(product.count);
     const navigate = useNavigate();
@@ -32,13 +32,17 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
         </div>
     }
 
+    function handleRemoveProduct(){
+        setRun(!run) 
+        removeItem(product._id)
+        data.toggle()
+    }
+
     function removeItemButton(showButton){
         return (
             showButton && (
                 <button 
-                onClick={() => 
-                    {setRun(!run) 
-                    removeItem(product._id)}}
+                onClick={() => handleRemoveProduct()}
                 >remove Product</button>
             )
         )

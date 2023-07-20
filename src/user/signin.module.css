@@ -4,11 +4,31 @@
     padding: 40px;
     box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    margin-top: 130px;
+    margin-top: 50px;
+    margin-right: 100px;
     margin-bottom: 50px;
 }
 @media (max-width: 800px) {
     .form {
+        margin-right: 50px;
         width: 70%;
+    }
+}
+.background {
+    padding-bottom: 200px;
+    background-image: url('../../public/background2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 50%;
+    margin-right: 150px;
+    background-position-y: 10%;
+}
+@media (max-width: 800px) {
+    .form {
+        width: 80%;
+    }
+    .background{
+        background-size: 100%;
+        background-position: center calc(40% - 50px)
     }
 }

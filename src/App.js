@@ -2,7 +2,7 @@
 import RouterRootLayout from './user/RouterRootLayout';
 import AdminRootLayout from './admin/AdminRouteLayout';
 import Home from './core/Home'
-import Signin from './user/Singin';
+import Signin from './user/Signin';
 import Signup from './user/Signup';
 import Shop from './core/shop';
 import { ShoppingCart } from './core/cart';
@@ -19,6 +19,7 @@ import {createBrowserRouter,RouterProvider } from 'react-router-dom';
 import {loader as loadCategories} from './admin/AddProduct';
 import {loader as productDetail} from './core/product';
 import Orders from './admin/Order';
+import CartProvider from './Contex/CartProvider';
 
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
       {path: '/product/:productId',
       loader: productDetail,
       element: <ProductDetails />},
-      {path: '/Cart',
+      {path: '/cart',
       element: <ShoppingCart />},
       {path: '/signin',
       element: <Signin />},
@@ -63,7 +64,9 @@ function App() {
     ]
   }])
   return <>
-    <RouterProvider router={router} />
+    <CartProvider>
+        <RouterProvider router={router} />
+    </CartProvider>
   </>
 }
 

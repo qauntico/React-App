@@ -17,19 +17,31 @@ export async function User(data, action){
                 return result
             }
 };
-
+//get and store the user token in the local storage
 export const authenticate = (data, next) => {
     //this line checks first if the browser window or any tap is open to make sure this is executed on the cleint site not server
     if (typeof window != "undefined"){
+        const expiration = new Date();
+        expiration.setTime(expiration.getTime() + 30 * 1000);
+        localStorage.setItem('expiration', expiration.toISOString());
         localStorage.setItem('jwt',JSON.stringify(data));
         next();
     }
 };
-
+//get expiration date
+export function getTokenDuration() {
+    const storedExpirationDate = localStorage.getItem('expiration');
+    const expirationDate = new Date(storedExpirationDate);
+    const now = new Date();
+    const duration = expirationDate.getTime() - now.getTime();
+    return duration;
+}
+//signout user 
 export const signout = async (next) => {
     if (typeof window != "undefined") {
         localStorage.removeItem('jwt');
-        next()
+        localStorage.removeItem('expiration');
+        next();
         return fetch('http://localhost:8080/api/logout', {
             method: 'POST',
 
@@ -46,6 +58,10 @@ export const isAuthenticated = () => {
     if(typeof window == 'undefined') {
         return false
     }
+    //const tokenDuration = getTokenDuration();
+    //if (tokenDuration < 0) {
+        //return false
+    //}
     if(localStorage.getItem('jwt')){
         return localStorage.getItem('jwt')
     }else{

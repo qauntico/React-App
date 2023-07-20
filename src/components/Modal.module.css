@@ -1,0 +1,62 @@
+.container {
+    width: 500px;
+    padding: 10px;
+    background: white;
+    margin: 0 auto;
+    height: 280px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: slideIn 0.5s ease-in-out;
+    z-index: 100;
+    overflow: hidden;
+    
+}
+@media (max-width: 912px) {
+    .container{
+        width: 80%;
+    }
+}
+@keyframes slideIn {
+    0% {
+      top: -50%;
+    }
+    100% {
+      top: 50%;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(0, 0, 0, 0.75);
+    
+}
+.modal{
+    display: flex;
+}
+.image{
+    width: 50%;
+}
+.modal h6{
+    margin-top: 40px;
+    text-align: center;
+    width: 100%;
+}
+.modal p{
+    margin-top: 10px;
+    font-size: 80%;
+    text-align: center;
+}
+
+.modal-button{
+    position: relative;
+    left: 60px;
+}

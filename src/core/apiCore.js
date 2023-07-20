@@ -1,4 +1,5 @@
 import queryString from 'query-string';
+import { isAuthenticated } from '../auth/auth';
 export async function getProduct(sortBy){
     const response = await fetch(`http://localhost:8080/api/products/?sort=${sortBy}&order=desc&amount=6`, {
         method: 'GET',
@@ -69,7 +70,9 @@ export async function relatedProduct(productId){
 };
 
 export async function getBrainTreeToken(userId, token){
-    const response = await fetch(`http://localhost:8080/api/braintree/getToken/${userId}`, {
+    const isAuth = JSON.parse(isAuthenticated());
+    if(isAuth){
+        const response = await fetch(`http://localhost:8080/api/braintree/getToken/${userId}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -85,6 +88,9 @@ export async function getBrainTreeToken(userId, token){
         }else{
             return result
         }
+    }else{
+        return {error: ""}
+    } 
 };
 
 export async function processPayment(userId, token,paymentData){

@@ -14,7 +14,7 @@ export function ShoppingCart(){
         return (
             <div>
                 {items.map((product,i)=>(
-                <Cart key={i} product={product} update={true} showRemoveItemButton={true} run={run} setRun={setRun}/>
+                    <Cart key={i} product={product} update={true} showRemoveItemButton={true} run={run} setRun={setRun}/>
                 ))} 
             </div>  
         )
