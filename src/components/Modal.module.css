@@ -15,11 +15,7 @@
     overflow: hidden;
     
 }
-@media (max-width: 912px) {
-    .container{
-        width: 80%;
-    }
-}
+
 @keyframes slideIn {
     0% {
       top: -50%;
@@ -59,4 +55,19 @@
 .modal-button{
     position: relative;
     left: 60px;
+}
+@media (max-width: 400px) {
+    .container{
+        width: 80%;
+    }
+    .modal-button{
+        left: 20px;
+        padding: 5px 2px;
+    }
+    .modal p{
+        font-size: 60%;
+    }
+    .container{
+        height: 200px;
+    }
 }

@@ -116,7 +116,3 @@ export default function Signin() {
         </Form>
     </Container>
 }
-export function action () {
-    console.log('yes')
-    fetch('google.com')
-}
