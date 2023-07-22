@@ -1,6 +1,7 @@
 import React from "react";
 import { isAuthenticated } from "../auth/auth";
 import { Link } from "react-router-dom";
+import AdminDashboardDesign from "../components/AdminDashBoardDesign";
 
 const Admin = () => {
     const {user} = JSON.parse(isAuthenticated());
@@ -14,8 +15,11 @@ const Admin = () => {
         </>
     }
     return <>
-        <p style={{marginTop: '200px'}}>{name}</p>
-        {userLinks()}
+        <div style={{marginTop: '90px'}}>
+            <AdminDashboardDesign />
+            {userLinks()}
+            {name}
+        </div>
     </>
 };
 export default Admin;

@@ -12,7 +12,7 @@
 }
 .container {
     padding:25px 20px;
-    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    
 }
 .heading .hov:hover, .active {
     border-bottom: 2px solid #636e72;
