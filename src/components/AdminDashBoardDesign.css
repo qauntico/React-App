@@ -32,8 +32,9 @@ body.dark{
 .sidebar{
     position: fixed;
     left: 0;
+    top:72px;
     padding-top: 5px;
-    background: var(--light);
+    background: rgb(248,249,250);
     width: 230px;
     height: 100%;
     overflow-x: hidden;
@@ -66,7 +67,7 @@ body.dark{
 }
 
 .sidebar .logo .bx{
-    min-width: 90px;
+    min-width: 70px;
     display: flex;
     justify-content: center;
     font-size: 2.2rem;
@@ -131,6 +132,10 @@ body.dark{
     transition: all 0.3s ease;
 }
 
+.sidebar .side-menu li div:hover{ 
+    cursor: pointer;
+}
+
 .sidebar .side-menu li.active div{
     color: var(--success);
 }
@@ -165,15 +170,15 @@ body.dark{
 
 .content nav{
     height: 56px;
-    background: var(--light);
+    background: rgb(248,249,250);
     padding: 0 24px 0 0;
     display: flex;
     align-items: center;
     grid-gap: 24px;
-    position: sticky;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+    position: fixed;
+    border-bottom-right-radius: 20px;
+    left: 50;
+
 }
 .content nav::before{
     content: "";
@@ -183,7 +188,7 @@ body.dark{
     bottom: -40px;
     left: 0;
     border-radius: 50%;
-    box-shadow: -20px -20px 0 var(--light);
+    box-shadow: -20px -20px 0 rgb(248,249,250);
 }
 
 .content main{
@@ -202,6 +207,7 @@ body.dark{
 
 .content main .header .left h1{
     font-size: 36px;
+    padding-left: 46px;
     font-weight: 600;
     margin-bottom: 10px;
     color: var(--dark);
@@ -216,7 +222,7 @@ body.dark{
 }
 
 .content main .insights li{
-    padding: 24px;
+    padding: 15px;
     background: var(--light);
     border-radius: 20px;
     display: flex;
@@ -251,12 +257,13 @@ body.dark{
 }
 
 .content main .insights li .info h3{
-    font-size: 24px;
-    font-weight: 600;
+    font-size: 90%;
+    font-weight: 700;
     color: var(--dark);
 }
 
 .content main .insights li .info p{
+    font-size: 80%;
     color: var(--dark);
 }
 
@@ -311,6 +318,7 @@ body.dark{
 }
 
 .content main .bottom-data .orders table td{
+    font-size: small;
     padding: 16px 0;
 }
 
@@ -358,6 +366,9 @@ body.dark{
 .content main .bottom-data .orders table tr td .status.pending{
     background: var(--warning);
 }
+.content main .bottom-data .orders table tr td .status.danger{
+    background: var(--danger);
+}
 
 .content main .bottom-data .reminders{
     flex-grow: 1;
@@ -372,11 +383,15 @@ body.dark{
     width: 100%;
     margin-bottom: 16px;
     background: var(--grey);
-    padding: 14px 10px;
+    padding: 9px 10px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.content main .bottom-data .reminders .task-list li:hover {
+    cursor: pointer;
 }
 
 .content main .bottom-data .reminders .task-list li .task-title{
@@ -385,6 +400,7 @@ body.dark{
 }
 
 .content main .bottom-data .reminders .task-list li .task-title p{
+    font-size: 80%;
     margin-left: 6px;
 }
 
@@ -411,6 +427,67 @@ div.AcceptDeclineUser button:first-child {
     color: var(--success);
 }
 
+div.main-profile-container{
+    padding-top: 70px;
+}
+
+.user-main-container{
+    padding:70px;
+}
+
+.user-main-container .user-secondary-container .user-column{
+    box-shadow: 0px 0px 5px 1px rgba(73, 73, 73, 0.2);
+    padding: 10px;
+    height: 20vh;
+    margin-right: 30px;
+
+}
+
+.user-main-container .user-secondary-container .user-column div:first-child{
+    border: 1px solid rgb(228, 221, 221);
+    height: 100%;
+    padding: 10px;
+}
+
+.user-main-container .user-secondary-container .user-column div{
+    font-size: 65%;
+    font-weight: 600;
+}
+
+.user-main-container .user-secondary-container .user-second-column{
+    box-shadow: 0px 0px 5px 1px rgba(73, 73, 73, 0.2);
+    padding: 10px;
+    height: 70vh;
+}
+
+.user-main-container .user-secondary-container .user-second-column .user-detail-info {
+    border: 1px solid rgb(228, 221, 221);
+    height: 100%;
+    padding: 10px;
+}
+
+.user-main-container .user-secondary-container .user-second-column .user-detail-info h2 {
+    font-weight: 700;
+    color: var(--dark-grey);
+}
+
+.contact-info{
+    font-weight: 700;
+}
+.user-name{
+    font-size: 70%;
+}
+
+.profile-links {
+    margin-bottom: -1px;
+    color: var(--dark);
+}
+
+.return-to-dashboard{
+    padding: 2px 8px;
+    font-size: 55%;
+    margin-bottom: 10px;
+}
 @media screen and (max-width: 768px) {
     .sidebar{
         width: 200px;

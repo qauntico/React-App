@@ -1,7 +1,7 @@
 import React from "react";
 import { isAuthenticated } from "../auth/auth";
 import { Link } from "react-router-dom";
-import AdminDashboardDesign from "../components/AdminDashBoardDesign";
+import AdminSideBar from "../components/AdminSideBar";
 
 const Admin = () => {
     const {user} = JSON.parse(isAuthenticated());
@@ -15,8 +15,8 @@ const Admin = () => {
         </>
     }
     return <>
-        <div style={{marginTop: '90px'}}>
-            <AdminDashboardDesign />
+        <div style={{marginTop: '75px'}} >
+            <AdminSideBar />
             {userLinks()}
             {name}
         </div>

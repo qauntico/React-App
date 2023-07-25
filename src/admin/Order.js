@@ -4,7 +4,6 @@ import { isAuthenticated } from '../auth/auth';
 import moment from 'moment';
 
 export default function Orders(){
-    console.log("yes")
     const [orders, setOrders] = useState([]);
     const [statusValues, setStatusValues] = useState([]);
     const {user, token} = JSON.parse(isAuthenticated());
