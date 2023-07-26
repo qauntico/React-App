@@ -58,7 +58,7 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
             <h3>{product.price}</h3>
             {updateOption(update)}
             {removeItemButton(showRemoveItemButton)}
-            <Link to={`/product/${product._id}`}>
+            <Link to={`/event/${product._id}`}>
                 <button >view product</button>
             </Link>
             <Link to={``}>

@@ -4,19 +4,26 @@ import MainAdminDashBoard from "../admin/MainAdminDashBoard";
 import { isAuthenticated } from "../auth/auth";
 import CartContex from "../Contex/Cart-Contex";
 import UserProfile from "./UserComponents/UserProfile";
+import { useNavigate} from "react-router-dom";
 
 export default function AdminSideBar(){
     const data = useContext(CartContex);
+    const navigate = useNavigate();
     const [dashboard, setDashboard] = useState({
         AdminName: '',
         ShowSideBar: true
     })
     const {user, token} = JSON.parse(isAuthenticated());
-    
+    //state variables 
     const {
         AdminName,
         ShowSideBar
     } = dashboard;
+
+    //navigate to the create event route 
+    function NavigateToCreateEventRoute(){
+        navigate('create/event')
+    }
     
     //get just the user first name
     function GetUserFirstName(name){
@@ -49,7 +56,7 @@ export default function AdminSideBar(){
         </div>
         <ul className="side-menu">
             <li className="active"><div><i className='bx bxs-dashboard'></i>Dashboard</div></li>
-            <li><div><i className='bx bx-store-alt'></i>Create Events</div></li>
+            <li><div onClick={NavigateToCreateEventRoute}><i className='bx bx-store-alt'></i>Create Events</div></li>
             <li><div><i className='bx bx-message-square-dots'></i>View Orders</div></li>
             <li><div><i class='bx bxs-id-card'></i>Update Profile</div></li>
         </ul>

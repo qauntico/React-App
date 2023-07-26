@@ -1,6 +1,7 @@
 .error {
     width: 97%;
     font-size: 100%;
+    padding: 10px;
 }
 
 @media (max-width: 800px) {

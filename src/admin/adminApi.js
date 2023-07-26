@@ -18,9 +18,15 @@ export async function AdminApi(data, token,userId){
         }
 };
 
-export async function AddProduct(data, token,userId){
-    const response = await fetch(`http://localhost:8080/api/product/${userId}`, {
-        method: 'POST',
+export async function AddProduct(data, token,userId, method,params){
+    console.log(params)
+    var url = `http://localhost:8080/api/product/${userId}`;
+    if(method === 'PUT'){
+        const productId = params;
+        url = `http://localhost:8080/api/product/${productId}/${userId}`;
+    }
+    const response = await fetch(url, {
+        method: `${method}`,
         headers: {
             Accept: "application/json",
             'Authorization': `Bearer ${token}`

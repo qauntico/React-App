@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
+.event-form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 40px;
+    box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    margin-bottom: 50px;
+    margin-right: 30px;
+    background: transparent;
+}
+.event-background {
+    background-image: url('../../public/background2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 50%;
+    margin-right: 150px;
+    background-position-y: 10%;
+    padding-top: 120px;
+    padding-bottom: 120px;
+    height: 100%;
+}
+.event-heading{
+    font-size: 300%;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #363949;
+    text-align: center;
+    font-family: 'Pattaya', sans-serif;
+}
+
+.event-image{
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    position: relative;
+    left: 170px;
+    bottom: 15px;
+    border-radius: 100px;
+}
+@media (max-width: 800px) {
+    .event-form {
+        width: 90%;
+    }
+    .event-background{
+        background-size: 100%;
+        background-position: center calc(40% - 50px)
+    }
+    .event-heading{
+        text-align: center;
+    }
+    .event-image{
+        left: 195px;
+        height: 170px;
+        width: 170px;
+    }
+}
+
+@media screen and (max-width: 390px ) {
+    .event-heading{
+        font-size: 150%;
+        font-weight: 700;
+        text-align: center;
+    }
+    .event-image{
+        left: 80px;
+    }
+}

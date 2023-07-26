@@ -68,7 +68,6 @@ export default function Signup() {
         const form = event.currentTarget;
         event.preventDefault();
         if (form.checkValidity() === false) {
-            setCondition({...condition,loading: false});
             event.stopPropagation(); 
         }else{
           SendData();
@@ -107,7 +106,7 @@ export default function Signup() {
   
     return <Container style={{paddingTop: '120px'}} className={classes.background}>
       {condition.error && <ErrorMessage message={condition.error}/> }
-      {condition.success && <SuccessMessage message={condition.success}/> }
+      {condition.success && <SuccessMessage message={condition.success} method={'SIGNUP'}/> }
       <Form noValidate validated={validated} onSubmit={handleSubmit} className={classes.form} >
       <Row className="mb-3">
         <Form.Group as={Col} md={12} controlId="validationCustom01">

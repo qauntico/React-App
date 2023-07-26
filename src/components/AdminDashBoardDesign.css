@@ -132,8 +132,10 @@ body.dark{
     transition: all 0.3s ease;
 }
 
+
 .sidebar .side-menu li div:hover{ 
     cursor: pointer;
+    color: var(--success);
 }
 
 .sidebar .side-menu li.active div{
