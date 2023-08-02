@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+.order-heading {
+    background-image: url('../image/pexels-irina-iriser-943903.jpg');
+    background-repeat: no-repeat;  
+    height: 150px;
+    border-radius: 10px;
+    background-size:100% 150px;  
+}
+
+.order-heading h3{
+    font-size: 300%;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #fdfdfd;
+    text-align: center;
+    padding-top: 50px;
+    font-family: 'Pattaya', sans-serif;
+}
+
+@media  screen and (max-width: 576px) {
+    .order-heading h3{
+        padding-top: 30px;
+        font-size: 150%;
+    }
+}
+
+.order-details{
+    width: 95%;
+    margin-top: 15px;
+    border: 1px solid rgb(228, 221, 221);
+    border-radius: 10px;
+    margin: 15px auto;
+}
+
+.order-id-controller{
+    line-height: 1; 
+    padding: 15px 10px 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgb(228, 221, 221);
+}
+
+.order-id-controller div:first-child{
+    margin-bottom: 5px;
+}
+
+.order-id-controller div{
+    font-weight: 500;
+    font-size: 60%;
+}
+
+.order-id-controller div span{
+    color: rgb(184, 187, 190);
+}
+
+.order-body-details {
+    margin: 0 10px 10px;
+    border-bottom: 1px solid rgb(228, 221, 221);
+}
+
+.order-body-details div{
+    font-weight: 500;
+    font-size: 60%;
+}
+
+.user-status{
+    font-size: 55%;
+    margin-bottom: 2px;
+}
+
+.admin-request-background{
+    background-image: url('../image/background2.jpg');
+    background-repeat: no-repeat;  
+    height: 60vh;
+    border-radius: 10px;
+    background-size: 100% 400px;
+}
+
+.admin-request-body{
+    padding-top: 30px;
+}
+
+.admin-request-body p{
+    font-weight: 600;
+    font-family: 'Pattaya', sans-serif;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.admin-request-buttons{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.admin-request-buttons button{
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+@media screen and (max-width: 400px) {
+    .admin-request-body p{
+        width: 100%;
+    }
+    .admin-request-background{
+        background-size: 100% 300px; 
+    }
+}
+
+.form-control.no-border {
+    border: none;
+    box-shadow: none;
+  }
+

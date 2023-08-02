@@ -33,8 +33,8 @@ export default function MemberRequest({members,requestState}){
     }
     
     return (
-        <li className="completed" onClick={UserProfileInfo}>
-            <div className="task-title">
+        <li className="completed" >
+            <div className="task-title" onClick={UserProfileInfo}>
                 
                 <p>{members.user.name}</p>
             </div>

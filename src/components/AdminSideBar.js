@@ -74,7 +74,7 @@ export default function AdminSideBar(){
         <nav>
             <div onClick={ToggleSideBar}>{ShowSideBar ? <i class='bx bx-menu'></i> : <i class='bx bx-chevron-right bx-lg bx-tada' ></i>}</div>
         </nav>
-        {data.showProfile ? <UserProfile userProfileInfo={data.profileState} /> : <MainAdminDashBoard />}
+        {data.showProfile ? <UserProfile userProfileInfo={data.profileState.user} method={'ADMIN'} /> : <MainAdminDashBoard />}
     </div>
         </>
     )

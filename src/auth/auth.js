@@ -68,3 +68,23 @@ export const isAuthenticated = () => {
         return false
     }
 };
+
+export async function UpdateUserProfile(userId, token,profileData){
+    const response = await fetch(`http://localhost:8080/api/user/${userId}`, {
+        method: 'PUT',
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(profileData)
+        }).catch(err => {
+            console.log(err)
+        });
+        const result = await response.json();
+        if(response.ok){
+            return result
+        }else{
+            return result
+        }
+};

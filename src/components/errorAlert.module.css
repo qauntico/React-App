@@ -4,6 +4,11 @@
     padding: 10px;
 }
 
+.heading {
+    font-size: 100%;
+}
+
+
 @media (max-width: 800px) {
     .error {
         font-size: 80%;
@@ -12,6 +17,9 @@
         font-size: 80%;
     }
 }
-.heading {
-    font-size: 100%;
+
+@media screen and (max-width: 400px) {
+    .heading{
+        font-size: 120%;
+    }
 }

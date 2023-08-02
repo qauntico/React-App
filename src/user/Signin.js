@@ -35,7 +35,6 @@ export default function Signin() {
                 password.current.value = ''
             }else{
                 setCondition({...condition, error: ''})
-                setValidated(false)
                 authenticate(result, () => {
                     password.current.value = '';
                     email.current.value = '';
@@ -44,7 +43,7 @@ export default function Signin() {
                     }else{
                       navigate('/admin/dashboard');
                     }
-                    
+                    setValidated(false)
                 })     
             }    
         })
