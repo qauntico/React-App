@@ -58,7 +58,7 @@ export default function AdminSideBar(){
             <li className="active"><div><i className='bx bxs-dashboard'></i>Dashboard</div></li>
             <li><div onClick={NavigateToCreateEventRoute}><i className='bx bx-store-alt'></i>Create Events</div></li>
             <li><div><i className='bx bx-message-square-dots'></i>View Orders</div></li>
-            <li><div><i class='bx bxs-id-card'></i>Update Profile</div></li>
+            <li><div><i className='bx bxs-id-card'></i>Update Profile</div></li>
         </ul>
         <ul className="side-menu">
             <li>
@@ -72,7 +72,7 @@ export default function AdminSideBar(){
 
     <div className="content">
         <nav>
-            <div onClick={ToggleSideBar}>{ShowSideBar ? <i class='bx bx-menu'></i> : <i class='bx bx-chevron-right bx-lg bx-tada' ></i>}</div>
+            <div onClick={ToggleSideBar}>{ShowSideBar ? <i className='bx bx-menu'></i> : <i className='bx bx-chevron-right bx-lg bx-tada' ></i>}</div>
         </nav>
         {data.showProfile ? <UserProfile userProfileInfo={data.profileState.user} method={'ADMIN'} /> : <MainAdminDashBoard />}
     </div>

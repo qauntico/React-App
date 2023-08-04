@@ -5,7 +5,7 @@ import { relatedProduct } from "./apiCore";
 import Cart from "./card";
 
 export default function ProductDetails(){
-    const data = useRouteLoaderData('singleEvent')
+    const data = useRouteLoaderData('singleEvent');
     const [products, setProducts] = useState([]);
     useEffect(() => {
         getRelatedProducts()
@@ -20,7 +20,7 @@ export default function ProductDetails(){
     return <>
         <div style={{marginTop: '200px'}}>
             <h1>product detail page</h1>
-            <SingleProduct  name={data.name} quantity={data.quantity}  id={data._id} description={data.description} date={data.createdAt} noButton={true} category={data.category.name}/>
+            <SingleProduct product={data}/>
             <Link to='edit/event'>Edit Event</Link>
             {products.map((product, index) => (
                 <Cart key={index} product={product} name={product.name} id={product._id} description={product.description} />
@@ -28,7 +28,7 @@ export default function ProductDetails(){
         </div>
     </>
 }
-
+//load the products immedaitely when the page loads
 export async function loader({params}){
     const id = params.productId;
     const response = await fetch(`http://localhost:8080/api/product/one/${id}`, {

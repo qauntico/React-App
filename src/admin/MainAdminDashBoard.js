@@ -127,7 +127,7 @@ export default function MainAdminDashBoard(){
                         <p>Admin Request</p>
                     </span>
                 </li>
-                <li><i class='bx bx-male-female'></i>
+                <li><i className='bx bx-male-female'></i>
                     <span className="info">
                         <h3>
                             {totalUsers}

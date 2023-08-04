@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { isAuthenticated } from '../auth/auth';
 export async function getProduct(sortBy){
-    const response = await fetch(`http://localhost:8080/api/products/?sort=${sortBy}&order=desc&amount=6`, {
+    const response = await fetch(`http://localhost:8080/api/products/?sort=${sortBy}&amount=6`, {
         method: 'GET',
         }).catch(err => {
             console.log(err)
@@ -41,7 +41,6 @@ export async function getFilteredProducts(skip,limit,filters = {}){
 export async function searchProduct(params){
     //this queryString package contains a method that takes a object and converts it to a query string
     const query = queryString.stringify(params)
-    console.log(query)
     const response = await fetch(`http://localhost:8080/api/products/search?${query}`, {
         method: 'GET',
         }).catch(err => {
