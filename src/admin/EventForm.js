@@ -27,6 +27,10 @@ function EventForm({method, eventFormData}) {
     const {loading, error,success} = generalState;
     const [product, setProduct] = useState({
         name: '',
+        startDate: '',
+        startTime: '',
+        endTime: '',
+        location: '',
         description: '',
         price: '',
         categories: [],
@@ -46,6 +50,10 @@ function EventForm({method, eventFormData}) {
       formData.set('shipping', product.shipping);
       formData.set('quantity', product.quantity);
       formData.set('photo', product.photo);
+      formData.set('startDate', product.startDate);
+      formData.set('startTime', product.startTime);
+      formData.set('endTime', product.endTime);
+      formData.set('location', product.location);
       setGeneralState(prev => ({
         ...prev,
         loading: true
@@ -55,7 +63,8 @@ function EventForm({method, eventFormData}) {
             console.log(result.error)
             setGeneralState(prev => ({
               ...prev,
-              error: result.error
+              error: result.error,
+              loading: false
             }))
         }else{
             setProduct({
@@ -66,7 +75,11 @@ function EventForm({method, eventFormData}) {
                   category: '',
                   shipping: '',
                   quantity: '', 
-                  photo: ''
+                  photo: '',
+                  startDate: '',
+                  startTime: '',
+                  endTime: '',
+                  location: '',
             })
             fileInputRef.current.value = '';
             setGeneralState({loading: false, error: '', success: result.success});
@@ -91,11 +104,16 @@ function EventForm({method, eventFormData}) {
       
   };
 
-    //populating the category once the component is initaily mounted
+  //in setProduct state in the use useEffect we are first checking if a eventFormData is available before i set the default values for the input fiedls to empty strings
+  //this eventFormData will only be present if the user want's to edit an event so check in the EditSingleEvent Component
    useEffect(() => {
         setProduct(previous => ({
             ...previous,
             name: eventFormData ? eventFormData.name : '',
+            startDate: eventFormData ? eventFormData.startDate : '',
+            startTime: eventFormData ? eventFormData.startTime : '',
+            endTime: eventFormData ? eventFormData.endTime : '',
+            location: eventFormData ? eventFormData.location : '',
             description: eventFormData ? eventFormData.description : '',
             price: eventFormData ?  eventFormData.price : '',
             quantity: eventFormData ?  eventFormData.quantity : '',
@@ -159,6 +177,58 @@ function EventForm({method, eventFormData}) {
           <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group>
+        <Form.Group controlId="startDate">
+            <Form.Label>Start Date</Form.Label>
+            <Form.Control
+              required
+              type="date"
+              name="startDate"
+              value={product.startDate}
+              onChange={valueChange}
+              placeholder="Start Date"
+            />
+            <Form.Control.Feedback type="invalid">Please Enter Start Date...</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="startTime">
+            <Form.Label>Start Time</Form.Label>
+            <Form.Control
+              required
+              type="time"
+              name="startTime"
+              value={product.startTime}
+              onChange={valueChange}
+              placeholder="Start Time"
+            />
+            <Form.Control.Feedback type="invalid">Please Enter Start Time...</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="endTime">
+            <Form.Label>End Time</Form.Label>
+            <Form.Control
+              required
+              type="time"
+              name="endTime"
+              value={product.endTime}
+              onChange={valueChange}
+              placeholder="End Time"
+            />
+            <Form.Control.Feedback type="invalid">Please Enter End Time...</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="location">
+            <Form.Label>Location</Form.Label>
+            <Form.Control
+              required
+              type="text"
+              name="location"
+              value={product.location}
+              onChange={valueChange}
+              placeholder="Location"
+            />
+            <Form.Control.Feedback type="invalid">Please Enter Event Location...</Form.Control.Feedback>
+            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+          </Form.Group>
         <Form.Label>Description</Form.Label>
             <FloatingLabel  controlId="floatingTextarea2" label="Description">
             <Form.Control
@@ -236,8 +306,8 @@ function EventForm({method, eventFormData}) {
           <Form.Label>Shipping</Form.Label>
           <Form.Select name='shipping' onChange={valueChange} value={product.shipping}>
             <option>Please select</option>
-            <option value="0">Yes</option>
-            <option value="1">No</option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
           </Form.Select>
         </Form.Group>
       </Row>

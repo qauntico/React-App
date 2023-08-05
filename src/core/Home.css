@@ -336,5 +336,5 @@ height: 3rem;
 }
 
 .grow-on-hover:hover {
-    transform: scale(1.1); /* Apply the grow animation on hover */
+    cursor: pointer;
 }

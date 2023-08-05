@@ -1,0 +1,129 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+
+  .b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+  }
+
+  .bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+  .main-event-detail-image{
+    padding-top: 90px;
+  }
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+    .h-md-250 { height: 250px; }
+}
+  
+.blog-post {
+    margin-bottom: 4rem;
+}
+
+.event-accessibility-body{
+    border: 1px solid #e3e6ed ;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.event-accessibility-title{
+    font-size: 1.5625rem !important;
+    font-weight:600;
+    color: #919191;
+}
+
+.event-accessibilty-info-body{
+    border: 1px solid #e3e6ed;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.event-location-body{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.event-location-body h6{
+    margin-top: 5px;
+}
+
+.event-location-body div i{
+    padding: 3px;
+    border-radius: 5px;
+}
+
+.event-location div i{
+    background-color: #C7EBFF;
+}
+
+.event-time div i{
+    background-color: #E5EDFF;
+}
+
+.start-date{
+    line-height: 0.2;
+    font-size: 13px;
+}
+
+
+.event-detail-buttons {
+    display: flex;
+    gap: 5px;
+    width: 100%; /* Set the desired width for the main div */
+    padding: 15px; /* Add internal padding to the main div */
+}
+
+.event-detail-buttons .get-tickets {
+    display: block;
+    width: 100%; /* Make the button take the full width of the main div */
+    padding: 10px 20px; /* Add padding to the button (adjust as needed) */
+    background-color: #007bff; /* Set the primary background color (Bootstrap blue) */
+    color: #fff; /* Set the text color to white */
+    border: none; /* Remove the default button border */
+    border-radius: 4px; /* Add some border radius for a slightly rounded appearance */
+    cursor: pointer;
+}
+
+.event-detail-buttons .get-tickets:hover {
+    background-color: #0056b3; /* Change the background color on hover */
+} 
+
+.event-detail-buttons .edit-event {
+    display: block;
+    width: 100%; 
+    padding: 10px 20px;
+}
+
+.event-detail-headings{
+    font-size: 160% !important;
+    font-weight:600;
+    color: #919191;
+} 
+
+.related-product-behavior{
+    height: 500px;
+    overflow: scroll;
+}
+
+.related-product-behavior::-webkit-scrollbar{
+    display: none;
+}

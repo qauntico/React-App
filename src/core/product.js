@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import { Link, useRouteLoaderData } from "react-router-dom";
-import SingleProduct from "./productDetailPage";
+import { useRouteLoaderData } from "react-router-dom";
+import SingleProduct from "./ProductDetailPage";
 import { relatedProduct } from "./apiCore";
-import Cart from "./card";
+
 
 export default function ProductDetails(){
     const data = useRouteLoaderData('singleEvent');
@@ -18,13 +18,8 @@ export default function ProductDetails(){
         })
     }
     return <>
-        <div style={{marginTop: '200px'}}>
-            <h1>product detail page</h1>
-            <SingleProduct product={data}/>
-            <Link to='edit/event'>Edit Event</Link>
-            {products.map((product, index) => (
-                <Cart key={index} product={product} name={product.name} id={product._id} description={product.description} />
-            ))}
+        <div style={{paddingTop: '100px'}}>
+            <SingleProduct product={data} relatedProducts={products}/>
         </div>
     </>
 }
