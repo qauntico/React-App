@@ -7,10 +7,14 @@ export default function RadioBox({prices, handlefilters}){
         setValue(e.target.value)
     }
     return prices.map((price,index) => (
-        <div  key={index}>
+        <div className="category" key={index} >
             {/* we are putting the handle change into an arrow function so that it doesn't invoke the state immediately when the component is rendered */}
-            <input type="radio" onChange={handleChange} 
-             value={price._id} name={price}/>
-            <label >{price.name}</label>
-        </div>))
+            <input 
+                type="radio" 
+                value={price._id}
+                name={price}
+                onChange={handleChange}/>
+            <label htmlFor={price.name}>{price.name}</label>
+        </div>     
+        ))
 }

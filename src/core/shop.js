@@ -5,8 +5,15 @@ import { useRouteLoaderData } from "react-router-dom";
 import { price } from "./fixedPrices";
 import RadioBox from "./radiobox";
 import { getFilteredProducts } from "./apiCore";
+import CardIcon from '../components/image/background2.jpg';
+import './shop.css'
+import { Container,Offcanvas,Button} from "react-bootstrap";
 
 export default function Shop(){
+    const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
     const shopData = useRouteLoaderData('token');
     //console.log(shopData)
     const [myFilters, setMyFilters] = useState({
@@ -34,7 +41,7 @@ export default function Shop(){
         setData(shopData.data);
         setSize(shopData.size);
     },[shopData]);
-
+    //this take care of all the filters to be sent to the backend
     function handlefilters(filters, sort){
         const newFilters = {...myFilters};//creates a new  object an pass in the default object
         myFilters.filters[sort] = filters;//sets the sort which can either be product or category to their various arrays i.e updates their state
@@ -57,6 +64,7 @@ export default function Shop(){
         return null
     };
 
+    //method to load more
     function loadMore(){
         let toSkip = skip + limit
         getFilteredProducts(toSkip, limit, myFilters.filters).then(result => {
@@ -70,38 +78,112 @@ export default function Shop(){
         })
     };
 
- 
+    //button to load more products
    function  loadMoreButton(){
-        console.log(size)
         return (
             size > 0 && size >= limit && 
             (
-                <button onClick={loadMore}>load more</button>
+                <Button variant="secondary" onClick={loadMore}>load more</Button>
             )
         )
     };
 
-
-    return <>
-        <div className="row" style={{marginTop: '200px'}}>
-            <div className="col-4">
-                <ul>
-                    left
-                    <CheckBox handlefilters={filters => handlefilters(filters,'category')}/>
-                </ul>
-                <div>
-                    left
-                    <RadioBox handlefilters={filters => handlefilters(filters,'price')} prices={price}/>
-                </div>
-            </div>
-            <div className="col-8">
-                {data.map((product,index) => (
-                        <Cart key={index} product={product} id={product._id} name={product.name}  price={product.price} description={product.description}/>
-                    ))}
-                {loadMoreButton()}
-            </div>
-        </div>
-    </>
+    return (
+        <>
+            <Container  className='shop-main-background' fluid>
+                {show && (
+                    <>
+                       <Offcanvas show={show} onHide={handleClose} responsive="lg">
+                            <Offcanvas.Header closeButton>
+                            <Offcanvas.Title>Event Filters</Offcanvas.Title>
+                            </Offcanvas.Header>
+                            <Offcanvas.Body>
+                            <div className="mb-0">
+                                <div className="col-lg-3   col-xl-2 pt-3">
+                                        <div  style={{top: "2rem"}}>
+                                            <div className="p-4 mb-3 bg-body-tertiary rounded">
+                                            <h4 className="fs">Category</h4>
+                                            <div className="mb-0">
+                                                <div className="category-sidebar">
+                                                    <CheckBox handlefilters={filters => handlefilters(filters,'category')}/>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div  style={{top: "2rem"}}>
+                                            <div className="p-4 mb-3 bg-body-tertiary rounded">
+                                            <h4 className="fs">Price</h4>
+                                            <div className="mb-0">
+                                                <div className="category-sidebar">
+                                                    <RadioBox handlefilters={filters => handlefilters(filters,'price')} prices={price}/>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </Offcanvas.Body>
+                        </Offcanvas> 
+                    </>
+                )}
+                
+                <div className="card card-cover h-100 overflow-hidden text-bg-dark rounded-3 shadow-lg mb-4 main-event-detail-image shop-main-image" >
+                    <div className="d-flex flex-column h-100 p-5 pb-3 text-white text-shadow-1">
+                        <h3 className="pt-5 mt-5 mb-4 display-6 lh-1 fw-bold">Event Tickets Emporium</h3>
+                        <ul className="d-flex list-unstyled mt-auto">
+                        <li className="me-auto">
+                            <img src={CardIcon} alt="icon" width="32" height="32" className="rounded-circle border border-white"/>
+                        </li>
+                        
+                        </ul>
+                    </div>
+                    </div>
+                    <div className="filter-body">
+                        <div>
+                            <Button  variant="outline-secondary" className="d-lg-none" onClick={handleShow}>
+                                <i className='bx bx-filter' ></i>
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="row g-1">
+                        <div className="col-lg-3 col-xl-2 pt-3 event-filters">
+                            <div  style={{top: "2rem"}}>
+                                <div className="p-4 mb-3 bg-body-tertiary rounded">
+                                <h4 className="fs">Category</h4>
+                                <div className="mb-0">
+                                    <div className="category-sidebar">
+                                        <CheckBox handlefilters={filters => handlefilters(filters,'category')}/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <div  style={{top: "2rem"}}>
+                                <div className="p-4 mb-3 bg-body-tertiary rounded">
+                                <h4 className="fs">Price</h4>
+                                <div className="mb-0">
+                                    <div className="category-sidebar">
+                                        <RadioBox handlefilters={filters => handlefilters(filters,'price')} prices={price}/>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div className="col-lg-8 col-xl-10 g-4">
+                            <div className="shop-items">
+                                    {data.map((product,index) => (
+                                        <Cart key={index} product={product}/>
+                                    ))}
+                            </div>
+                        </div>
+                        {loadMoreButton()} 
+                    </div>
+                    
+        `   </Container>
+        </>
+    )
+    
 }
 
 export async function loader(){

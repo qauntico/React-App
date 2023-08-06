@@ -167,7 +167,6 @@ export default function MainAdminDashBoard(){
                     <div className="header">
                         <i className='bx bx-note'></i>
                         <h3>Pending Admin Request</h3>
-                        <Button variant="secondary">View All</Button>
                     </div>
                     <div className='scroll'>
                         <ul className="task-list">

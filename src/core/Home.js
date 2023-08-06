@@ -159,7 +159,7 @@ export default function Home() {
                         {/*Most purchase events*/}
                         <div className="container px-4 py-5" id="custom-cards">
                             <h2 className="pb-2 border-bottom home-page-title">Most Purchase Events</h2>
-                            <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-3">
+                            <div className="home-items">
                                 {productBySales.map(product => (
                                     <Cart key={product._id} product={product}/>
                                 ))}
@@ -169,7 +169,7 @@ export default function Home() {
                         {/*Recent events*/}
                         <div className="container px-4 py-5" id="custom-cards">
                             <h2 className="pb-2 border-bottom home-page-title">Recent Events</h2>
-                            <div className="row row-cols-1 row-cols-lg-3 align-items-stretch g-4 py-3">
+                            <div className="home-items">
                                 {newProdcts.map(product => (
                                     <Cart key={product._id} product={product} />
                                 ))}

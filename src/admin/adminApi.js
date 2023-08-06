@@ -1,8 +1,9 @@
+//create categories
 export async function AdminApi(data, token,userId){
+    console.log(data,token,userId)
     const response = await fetch(`http://localhost:8080/api/category/create/${userId}`, {
         method: 'POST',
         headers: {
-            Accept: "application/json",
             "Content-Type": "application/json",
             'Authorization': `Bearer ${token}`
         },
@@ -17,6 +18,38 @@ export async function AdminApi(data, token,userId){
             return result
         }
 };
+
+//get all  categories method
+export async function getAllCategories(){
+    const response = await fetch(`http://localhost:8080/api/all/category`, {
+        method: 'GET'
+        })
+    const result = await response.json();
+    if(response.ok) {
+        return result
+    }else{
+        return result
+    }
+};
+
+//delete category method
+export async function deleteCategory(userId,categoryId,token){
+    const response = await fetch(`http://localhost:8080/api/category/${categoryId}/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: "application/json",
+            'Authorization': `Bearer ${token}`
+        }
+        })
+
+    const result = await response.json();
+    if(response.ok) {
+        return result
+    }else{
+        return result
+    }
+};
+
 
 export async function AddProduct(data, token,userId, method,params){
     console.log(params)
@@ -43,6 +76,7 @@ export async function AddProduct(data, token,userId, method,params){
         }
 };
 
+//get all orders 
 export async function listOrders(userId,token){
     const response = await fetch(`http://localhost:8080/api/order/list/${userId}`, {
         method: 'GET',

@@ -6,7 +6,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import { Container } from "react-bootstrap";
 import { AddProduct } from './adminApi';
 import { isAuthenticated } from '../auth/auth';
-import { json, useLoaderData, useParams} from 'react-router-dom';
+import { json, useParams, useRouteLoaderData} from 'react-router-dom';
 import SuccessMessage from '../components/successAtlert';
 import ErrorMessage from '../components/errorAtlert';
 import './EventForm.css'
@@ -16,7 +16,7 @@ function EventForm({method, eventFormData}) {
     const param = useParams();
     const [validated, setValidated] = useState(false);
     const {token, user} = JSON.parse(isAuthenticated());
-    const data = useLoaderData();
+    const data = useRouteLoaderData('category');
     const [imagePreview, setImagePreview] = useState('');
     const fileInputRef = useRef(null)
     const [generalState, setGeneralState] = useState({

@@ -1,0 +1,58 @@
+
+.shop-main-background{
+    margin-top: 95px;
+}
+
+.shop-main-image{
+    background-image: url('./HomeImages/shop-page.jpg');
+}
+
+.shop-items{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-evenly;
+}
+
+.category-sidebar {
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  /* Style the category checkboxes */
+  .category {
+    margin-bottom: 10px;
+  }
+  
+  .category label {
+    font-size: 16px;
+  }
+  
+  .category input[type="checkbox"],
+  .category input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  
+
+.category input[type="checkbox"]:checked + label,
+.category input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: #636e72;;
+}
+.filter-body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+@media screen and (max-width: 992px) {
+  .event-filters{
+    display: none;
+  }
+}
+
+  

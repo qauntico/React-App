@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import { useLoaderData } from "react-router-dom";
 
+
 export default function CheckBox({handlefilters}){
     const [checked, setChecked] = useState([]);
     const data = useLoaderData();
@@ -20,11 +21,13 @@ export default function CheckBox({handlefilters}){
         //console.log(checked)
     }  
     return data.map((category,index) => (
-        <li  key={index}>
-            {/* we are putting the handle change into an arrow function so that it doesn't invoke the state immediately when the component is rendered */}
-            <input type="checkbox" onChange={() => handleChange(category._id) } 
-             checked={checked.includes(category._id)} />
-            <label > {category.name}</label>
-        </li>
+        <div className="category" key={index} >
+            <input 
+                type="checkbox" 
+                checked={checked.includes(category._id)}  
+                name= {category.name}
+                onChange={() => handleChange(category._id) }/>
+            <label htmlFor={category.name}>{category.name}</label>
+        </div>  
     ))
 }

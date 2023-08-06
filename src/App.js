@@ -9,7 +9,6 @@ import Shop from './core/shop';
 import { ShoppingCart } from './core/cart';
 import ProductDetails from './core/product';
 import EditSingleEvent from './admin/EditSingleEvent';
-import CreateCategory from './admin/AddCategory';
 import CreateNewEvent from './admin/CreateNewEvent';
 import PrivateRoute from './auth/PrivateRoute';
 import AdminPrivateRoute from './auth/AdminPrivateRoute';
@@ -57,14 +56,13 @@ function App() {
       element: <PrivateRoute element={Dashboard} />},
       {path: '/admin/dashboard',
       element: <AdminRootLayout />,
+      loader: loadCategories,
+      id: 'category',
       children: [
           {index: true,
           element: <AdminPrivateRoute element={Admin} />},
-          {path: 'create/category', 
-          element: <CreateCategory />},
           {path: 'create/event', 
-          element: <CreateNewEvent/>,
-          loader: loadCategories},
+          element: <CreateNewEvent/>},
           {path: 'orders',
           element: <Orders />}
       ]},

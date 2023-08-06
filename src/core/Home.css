@@ -338,3 +338,10 @@ height: 3rem;
 .grow-on-hover:hover {
     cursor: pointer;
 }
+
+.home-items{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-evenly;
+}

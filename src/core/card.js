@@ -20,6 +20,7 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
             navigate('/cart')
         }
     }
+    
     const handleChange = productId => event => {
         setRun(!run)
         setCount(event.target.value < 1 ? 1 : event.target.value)
@@ -63,7 +64,7 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
     
     return <>
         {shouldRedirect(redirect)}
-        <div className="col">
+        <div className="pb-3">
             <div className="card" style={{width: "18rem"}}>
                 <Link to={`/event/${product._id}`} className="grow-on-hover">
                     <ShowImage item={product} url='product' /> 
