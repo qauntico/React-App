@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { createOrder, getBrainTreeToken, processPayment } from "./apiCore";
 import DropIn from "braintree-web-drop-in-react";
 import { emptyCart } from "./cartHelpers";
+import { Button } from "react-bootstrap";
 
 export default function CheckOut({product}){
     const [data, setData] = useState({
@@ -16,7 +17,8 @@ export default function CheckOut({product}){
     const isAuth = JSON.parse(isAuthenticated());
     const userId = isAuth && isAuth.user._id;
     const token = isAuth && isAuth.token;
-
+    
+    //method to get braintree token
     function getToken(userId, token){
         getBrainTreeToken(userId, token).then(data => {
             if(data.error){
@@ -37,11 +39,13 @@ export default function CheckOut({product}){
             return currentValue + nextValue.count * nextValue.price
         },0)
     }
-
+    
+    //handle the user address
+    var address = data.address
     function handleAddress(event){
-        console.log(event.target.value)
-        setData({...data,address:event.target.value})
+        setData(prev => ({...prev,address:event.target.value}))
     }
+
     function buy(){
         //we have to send nonce to server
         //none = data.instance.requestPaymentMethod()
@@ -55,12 +59,11 @@ export default function CheckOut({product}){
             };
             processPayment(userId, token, paymentData)
                     .then(response => {
-                        console.log(data.address)
                         const createOrderData = {
                             products: product,
                             transaction_id: response.transaction_id,
                             amount: response.transaction.amount,
-                            address: data.address
+                            address: address
                         }
                         createOrder(userId,token,createOrderData);
                         setData({...data, success: response.success});
@@ -80,10 +83,10 @@ export default function CheckOut({product}){
 
     function showDropIn(){
         //onBlur is use so that when you click on any where on the page the error goes because when the error is displayed even when typing it dosen't go
-        return <div onBlur={() => setData({...data,error: ''})}>
+        return <div onBlur={() => setData({...data,error: ''})} className="mb-5">
             {data.clientToken != null && product.length > 0 ? (
                 <div>
-                    <div className="gorm-group mb-3">
+                    <div className="gorm-group">
                         <label className="text-muted">Delivery address: </label>
                         <textarea 
                             onChange={handleAddress}
@@ -94,7 +97,7 @@ export default function CheckOut({product}){
                     <DropIn options={{
                         authorization: data.clientToken 
                     }} onInstance={instance => (data.instance = instance)} />
-                    <button onClick={buy}>checkOut</button>
+                    <Button variant="secondary" onClick={buy} >checkOut</Button> 
                 </div>
             ) : null}
         </div>
@@ -114,7 +117,7 @@ export default function CheckOut({product}){
 
 
     return <div>
-        <h3>Total: ${getTotal(product)}</h3>
+        <h3>Total: FCA{getTotal(product)}</h3>
         {showSuccess(data.success)}
         {showError(data.error)}
         {isAuth ?

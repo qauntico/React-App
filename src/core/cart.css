@@ -1,0 +1,33 @@
+.cart-container{
+    margin-top: 110px;
+}
+
+.cart-image{
+    border-radius: 10px;
+}
+
+.cart-container h1{
+    margin-bottom: 80px;
+    font-weight: 700;
+    font-size: 350%;
+    color:#919191;
+}
+.cart-items{
+    border-bottom: 1px solid #f0f0f0;
+    padding: 20px;
+}
+
+.cart-checkout{
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 220%;
+    color:#919191;
+}
+
+
+
+@media screen and (max-width: 390px) {
+    .cart-container h1{
+        font-size: 250%;
+    }
+}
