@@ -59,9 +59,10 @@ export default function CheckOut({product}){
             };
             processPayment(userId, token, paymentData)
                     .then(response => {
+                        console.log(response.transaction.id)
                         const createOrderData = {
                             products: product,
-                            transaction_id: response.transaction_id,
+                            transaction_id: response.transaction.id,
                             amount: response.transaction.amount,
                             address: address
                         }

@@ -9,17 +9,35 @@ import CardIcon from '../components/image/background2.jpg';
 import { isAuthenticated } from "../auth/auth";
 import SuccessMessage from "../components/successAtlert";
 import RelatedProduct from "./ProductDetailPageRelatedEvents";
+import { DeleteEvent } from "../admin/adminApi";
 
 export default function SingleProduct({product,relatedProducts=[]}){
     const navigate = useNavigate();
     //the redirecting state
     const [redirect, setRedirect] = useState(false);
     const isAuth =JSON.parse(isAuthenticated());
+    const [loading, setLoading] = useState(false)
+    const token = isAuth && isAuth.token;
+    const userId = isAuth && isAuth.user._id;
     function AddToCart(){
         addItem(product, ()=> {
             setRedirect(true)
         })
     }
+
+    function RemoveEvent(){
+        setLoading(true)
+        DeleteEvent(userId,token,product._id).then(result => {
+            if(result.error){
+                setLoading(false)
+                console.log(result.error)
+            }else{
+                setLoading(false)
+                navigate('/shop')
+            }
+        })
+    }
+
 
     //handles navigation to the cart page
     function ShouldRedirect(redirect){
@@ -109,7 +127,7 @@ export default function SingleProduct({product,relatedProducts=[]}){
                             <button onClick={AddToCart} className="get-tickets">Get Tickets</button>
                             {isAuth && isAuth.user.role == 1 &&  <Button variant="secondary" className='edit-event' onClick={NavigateToEditEventPage}>Edit Event</Button>}
                         </div>
-
+                        {isAuth && isAuth.user.role == 1 &&  <Button variant="outline-danger" onClick={RemoveEvent} disabled={loading}>{!loading ? 'Delete': 'Deleting Event...'}</Button>}
                     </div>
                     <article className="pt-4">
                     <h2 className="event-detail-headings">Event Description</h2>

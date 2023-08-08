@@ -222,3 +222,20 @@ export async function getAllUsers(userId,token){
         return result
     }
 };
+
+//delete event
+export async function DeleteEvent(userId,token,productId){
+    const response = await fetch(`http://localhost:8080/api/product/${productId}/${userId}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: "application/json",
+            'Authorization': `Bearer ${token}`
+        }
+        })
+    const result = await response.json();
+    if(response.ok) {
+        return result
+    }else{
+        return result
+    }
+}

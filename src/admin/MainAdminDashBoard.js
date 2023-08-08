@@ -142,7 +142,6 @@ export default function MainAdminDashBoard(){
                     <div className="header">
                         <i className='bx bx-receipt'></i>
                         <h3>Recent Orders</h3>
-                        <Button variant="secondary">View All</Button>
                     </div>
                     <div className="scroll"> 
                     <table>

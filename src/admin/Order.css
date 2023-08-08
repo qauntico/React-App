@@ -1,0 +1,101 @@
+
+.order-main-body{
+    margin-top: 100px;
+    height: 100vh;
+}
+
+.order-main-body h1{
+    text-align: center;
+    font-size: 300%;
+    font-weight: 600;
+    margin-top: 150px;
+
+    margin-bottom: 50px;
+    color: #919191;
+    font-family: 'Pattaya', sans-serif;
+}
+
+.primary-order-container{
+    border: 1px solid #e3e6ed;
+    border-radius: 15px;
+}
+
+.order-title{
+    padding: 15px;
+    line-height: 0.9;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    margin-bottom: 10px;
+}
+
+
+.order-title p span{
+    color: rgb(184 187 189);
+    font-weight: 600;
+}
+
+.order-user-info{
+    padding: 0px 15px;
+    border-bottom: 1px solid #e3e6ed;
+    line-height: 0.5;
+}
+
+.order-user-info p{
+    font-size: 13px;
+    padding-bottom: 0px;
+}
+
+.order-user-info p span{
+    color: rgb(184 187 189);
+    font-weight: 600;
+}
+
+.order-products{
+    overflow: scroll;
+    padding: 10px;
+    max-height: 200px;
+}
+
+.order-products::-webkit-scrollbar{
+    display: none;
+}
+
+.order-status-update{
+    width: 10%;
+}
+
+.order-status-update select{
+    padding: 3px;
+    font-size: 10px;
+    margin-bottom: 16px;
+}
+
+.order-individual-products{
+    border-bottom: 1px solid #e3e6ed;
+    margin-bottom: 10px;
+    padding: 2px;
+}
+
+.order-individual-products p{
+    font-size: 13px;
+    line-height: 0.5;
+}
+
+.order-individual-products p span{
+    color: #919191;
+}
+
+@media screen and (max-width: 800px) {
+    .order-status-update{
+        width: 15%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .order-main-body h1{
+        font-size: 240%;
+    }
+    .order-status-update{
+        width: 31%;
+    }
+}

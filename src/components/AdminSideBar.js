@@ -4,9 +4,10 @@ import MainAdminDashBoard from "../admin/MainAdminDashBoard";
 import { isAuthenticated } from "../auth/auth";
 import CartContex from "../Contex/Cart-Contex";
 import UserProfile from "./UserComponents/UserProfile";
-import { useNavigate} from "react-router-dom";
+import { Navigate, useNavigate} from "react-router-dom";
 import CreateCategories from "../admin/CreateCategories";
 import ViewCategories from "../admin/ViewCategories";
+
 
 export default function AdminSideBar(){
     const data = useContext(CartContex);
@@ -41,6 +42,16 @@ export default function AdminSideBar(){
             ShowSideBar: !prev.ShowSideBar
         }))
     }
+    
+    //navigate to orders method
+    function NavigateToOrders(){
+        navigate('orders')
+    }
+
+    //navigate to admin profile
+    function NavigateToAdminProfile(){
+        navigate('/user/dashboard')
+    }
 
     useEffect(() => {
         GetUserFirstName(user.name);
@@ -61,16 +72,8 @@ export default function AdminSideBar(){
             <li><div onClick={NavigateToCreateEventRoute}><i className='bx bx-store-alt'></i>Create Events</div></li>
             <li className={data.showCreateEvent ? "active" : ""} onClick={data.ToggleCreateCategory}><div ><i className='bx bx-category-alt'></i>Create Category</div></li>
             <li className={data.showViewCategories ? "active" : ""} onClick={data.ToggleViewCategories}><div ><i className='bx bx-edit'></i>View Categories</div></li>
-            <li><div><i className='bx bx-book-alt'></i>View Orders</div></li>
-            <li><div><i className='bx bxs-id-card'></i>Update Profile</div></li>
-        </ul>
-        <ul className="side-menu">
-            <li>
-                <div  className="logout">
-                    <i className='bx bx-log-out-circle'></i>
-                    Logout
-                </div>
-            </li>
+            <li onClick={NavigateToOrders}><div><i className='bx bx-book-alt'></i>View Orders</div></li>
+            <li onClick={NavigateToAdminProfile}><div><i className='bx bxs-id-card'></i>Profile</div></li>
         </ul>
     </div>
 
