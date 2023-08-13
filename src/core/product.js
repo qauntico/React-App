@@ -26,7 +26,7 @@ export default function ProductDetails(){
 //load the products immedaitely when the page loads
 export async function loader({params}){
     const id = params.productId;
-    const response = await fetch(`http://localhost:8080/api/product/one/${id}`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/product/one/${id}`, {
         method: 'GET',
         }).catch(err => {
             console.log(err)

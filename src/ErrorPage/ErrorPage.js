@@ -1,9 +1,14 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
+import './ErrorPage.css';
+import Menu from "../core/Menu";
+
 export function ErrorPage() {
     const error = useRouteError();
     console.log(error)
     return <>
-        <h1>Error page</h1>
+        <Menu />
+        <div className="container-lg error-background">
+        </div>
     </>
 }

@@ -44,14 +44,14 @@ export default function Menu() {
                 {modalVisibility &&  <Modal visibility={HandleVisibility} />}
                 <Navbar collapseOnSelect expand="lg" className={`${"bg-body-tertiary"} ${classes.container} `} fixed="top">
                     <Container>
-                        <Navbar.Brand href="/" className={classes.logo}>Quantum | Shop</Navbar.Brand>
+                        <Navbar.Brand ><Link className={classes.logo}>Quantum | Shop</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">
                             </Nav>
                             <Nav className={classes.heading}>
                                 {isAuth && isAuth.user.role == 1 ?
-                                    <NavLink to='/admin/dashboard' className={({isActive}) => isActive ? classes.active: undefined} end>dashboard</NavLink> :
+                                    <NavLink to='/admin/dashboard' className={({isActive}) => isActive ? classes.active: undefined} end>Dashboard</NavLink> :
                                     <NavLink to='/user/dashboard' className={({isActive}) => isActive ? classes.active: classes.hov} end>dashboard</NavLink>
                                 }
                                 <NavLink to='/shop' className={({isActive}) => isActive ? classes.active: classes.hov} end>Shop</NavLink>

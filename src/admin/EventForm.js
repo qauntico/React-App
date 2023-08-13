@@ -323,7 +323,7 @@ function EventForm({method, eventFormData}) {
 export default EventForm;
 
 export async function loader(){
-    const response = await fetch('http://localhost:8080/api/all/category');
+    const response = await fetch('https://backend-c1rf.onrender.com/api/all/category');
 
     if(!response.ok) {
         throw json({error: 'An error occured fetching categories'},{status: 400})

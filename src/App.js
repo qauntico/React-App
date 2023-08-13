@@ -5,7 +5,7 @@ import EventRouteLayout from './admin/EventRouteLayout'
 import Home from './core/Home'
 import Signin from './user/Signin';
 import Signup from './user/Signup';
-import Shop from './core/shop';
+//import Shop from './core/shop';
 import { ShoppingCart } from './core/cart';
 import ProductDetails from './core/product';
 import EditSingleEvent from './admin/EditSingleEvent';
@@ -18,10 +18,12 @@ import { ErrorPage } from './ErrorPage/ErrorPage';
 import {loader as shopLoader} from './core/shop'
 import {createBrowserRouter,RouterProvider } from 'react-router-dom';
 import {loader as loadCategories} from './admin/EventForm';
-import {loader as productDetail} from './core/product';
+//import {loader as productDetail} from './core/product';
 import Orders from './admin/Order';
 import CartProvider from './Contex/CartProvider';
+import { lazy,Suspense } from 'react';
 
+const Shop = lazy(() => import('./core/shop'));//using lazy loading on the shop page
 
 function App() {
   const router = createBrowserRouter([{
@@ -34,10 +36,10 @@ function App() {
       element: <Home />,
       loader: loadCategories},
       {path: '/shop',
-      element: <Shop />,
-      loader: loadCategories},
+      element: <Suspense fallback={<p>Loading.....</p>}><Shop /></Suspense>,
+      loader: () => import('./admin/EventForm').then(module => module.loader())},
       {path: '/event/:productId',
-      loader: productDetail,
+      loader: (meta) => import('./core/product').then(module => module.loader(meta)),//added lazy loading here 
       id: 'singleEvent',
       element: <EventRouteLayout />,
       children: [

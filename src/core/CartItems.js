@@ -35,7 +35,7 @@ export default function CartItems({product, update = false, setRun = f => f,run 
             <li className='mb-3 cart-items'>
                 <Row >
                     <Col xs={12} sm={5}>
-                        <img src={`http://localhost:8080/api/product/photo/${product._id}`} alt="icon" width="100%" height="110" className="cart-image" />
+                        <img src={`https://backend-c1rf.onrender.com/api/product/photo/${product._id}`} alt="icon" width="100%" height="110" className="cart-image" />
                     </Col>
                     <Col xs={12} sm={7} >
                         <Row>

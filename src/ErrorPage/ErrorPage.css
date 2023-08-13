@@ -1,0 +1,10 @@
+
+
+.error-background{
+    margin-top: 40px;
+    background-image: url('./ErrorImage/404.jpg');
+    width: 100%;
+    height: 100vh; 
+    background-size: cover;
+    background-position: center;
+}

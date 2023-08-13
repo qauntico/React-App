@@ -56,7 +56,7 @@ export default function SingleProduct({product,relatedProducts=[]}){
     }
 
     //get's the event cover image for the event detail page
-    const backgroundImageUrl = `url(http://localhost:8080/api/product/photo/${product._id})`;
+    const backgroundImageUrl = `url(https://backend-c1rf.onrender.com/api/product/photo/${product._id})`;
     return (
         <>
            {ShouldRedirect(redirect)} 

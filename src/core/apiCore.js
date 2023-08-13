@@ -1,7 +1,7 @@
 import queryString from 'query-string';
 import { isAuthenticated } from '../auth/auth';
 export async function getProduct(sortBy){
-    const response = await fetch(`http://localhost:8080/api/products/?sort=${sortBy}&amount=6`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/products/?sort=${sortBy}&amount=6`, {
         method: 'GET',
         }).catch(err => {
             console.log(err)
@@ -20,7 +20,7 @@ export async function getFilteredProducts(skip,limit,filters = {}){
         skip,
         filters
     };
-    const response = await fetch(`http://localhost:8080/api/products/by/Search`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/products/by/Search`, {
         method: 'POST',
         headers: {
             Accept: "application/json",
@@ -41,7 +41,7 @@ export async function getFilteredProducts(skip,limit,filters = {}){
 export async function searchProduct(params){
     //this queryString package contains a method that takes a object and converts it to a query string
     const query = queryString.stringify(params)
-    const response = await fetch(`http://localhost:8080/api/products/search?${query}`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/products/search?${query}`, {
         method: 'GET',
         }).catch(err => {
             console.log(err)
@@ -55,7 +55,7 @@ export async function searchProduct(params){
 };
 //request to get related products
 export async function relatedProduct(productId){
-    const response = await fetch(`http://localhost:8080/api/products/related/${productId}`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/products/related/${productId}`, {
         method: 'GET',
         }).catch(err => {
             console.log(err)
@@ -71,7 +71,7 @@ export async function relatedProduct(productId){
 export async function getBrainTreeToken(userId, token){
     const isAuth = JSON.parse(isAuthenticated());
     if(isAuth){
-        const response = await fetch(`http://localhost:8080/api/braintree/getToken/${userId}`, {
+        const response = await fetch(`https://backend-c1rf.onrender.com/api/braintree/getToken/${userId}`, {
         method: 'GET',
         headers: {
             Accept: "application/json",
@@ -93,7 +93,7 @@ export async function getBrainTreeToken(userId, token){
 };
 
 export async function processPayment(userId, token,paymentData){
-    const response = await fetch(`http://localhost:8080/api/braintree/payment/${userId}`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/braintree/payment/${userId}`, {
         method: 'POST',
         headers: {
             Accept: "application/json",
@@ -113,7 +113,7 @@ export async function processPayment(userId, token,paymentData){
 };
 //create order in the backend
 export const createOrder = (userId, token, createOrderData) => {
-    return fetch(`http://localhost:8080/api/order/create/${userId}`, {
+    return fetch(`https://backend-c1rf.onrender.com/api/order/create/${userId}`, {
         method: "POST",
         headers: {
             Accept: "application/json",

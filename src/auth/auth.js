@@ -1,6 +1,6 @@
 
 export async function User(data, action){
-        const response = await fetch(`http://localhost:8080/api/${action}`, {
+        const response = await fetch(`https://backend-c1rf.onrender.com/api/${action}`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -42,7 +42,7 @@ export const signout = async (next) => {
         localStorage.removeItem('jwt');
         localStorage.removeItem('expiration');
         next();
-        return fetch('http://localhost:8080/api/logout', {
+        return fetch('https://backend-c1rf.onrender.com/api/logout', {
             method: 'POST',
 
         }).then(response => {
@@ -70,7 +70,7 @@ export const isAuthenticated = () => {
 };
 
 export async function UpdateUserProfile(userId, token,profileData){
-    const response = await fetch(`http://localhost:8080/api/user/${userId}`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/user/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: "application/json",

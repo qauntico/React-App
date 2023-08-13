@@ -192,7 +192,7 @@ export async function loader(){
         skip: 0,
         filters: {category: [], price: []}
     };
-    const response = await fetch(`http://localhost:8080/api/products/by/Search`, {
+    const response = await fetch(`https://backend-c1rf.onrender.com/api/products/by/Search`, {
         method: 'POST',
         headers: {
             Accept: "application/json",

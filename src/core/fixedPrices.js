@@ -6,22 +6,22 @@ export const price = [
     },
     {
         _id: 1,
-        name: '$0 to $9',
-        array: [0,9]
+        name: 'FCA 0 to FCA 900',
+        array: [0,900]
     },
     {
         _id: 2,
-        name: '$10 to $19',
-        array: [10,19]
+        name: 'FCA 1000 to FCA 9900',
+        array: [1000,9900]
     },
     {
         _id: 3,
-        name: '$20 to $29',
-        array: [20,29]
+        name: 'FCA 10000 to FCA 19900',
+        array: [10000,19900]
     },
     {
         _id: 4,
-        name: '$30 to $39',
-        array: [30,39]
+        name: 'FCA 20000 to FCA 100000',
+        array: [20000,100000]
     }
 ]
