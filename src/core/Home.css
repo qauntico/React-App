@@ -209,7 +209,7 @@ input[type="search"] {
 
 @media screen and (max-width: 500px) {
     .search-bar{
-        top: 21%;
+        top: 24%;
     }
     .search-form-icon{
         display: none;

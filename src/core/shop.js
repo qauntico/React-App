@@ -57,7 +57,7 @@ export default function Shop(){
     function handlePrice(value){
         const data = price;
         for(let i = 0; i < data.length; i++){
-            if(data[i]._id === value){
+            if(data[i]._id == value){
                 return data[i].array
             }
         }
