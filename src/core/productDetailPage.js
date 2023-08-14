@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from "react";
-import ShowImage from "./showIimage";
+import React, { useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import moment from "moment/moment";
 import './ProductDetailPage.css'
@@ -125,9 +124,9 @@ export default function SingleProduct({product,relatedProducts=[]}){
                         </div>
                         <div className="event-detail-buttons">
                             <button onClick={AddToCart} className="get-tickets">Get Tickets</button>
-                            {isAuth && isAuth.user.role == 1 &&  <Button variant="secondary" className='edit-event' onClick={NavigateToEditEventPage}>Edit Event</Button>}
+                            {isAuth && isAuth.user.role === 1 &&  <Button variant="secondary" className='edit-event' onClick={NavigateToEditEventPage}>Edit Event</Button>}
                         </div>
-                        {isAuth && isAuth.user.role == 1 &&  <Button variant="outline-danger" onClick={RemoveEvent} disabled={loading}>{!loading ? 'Delete': 'Deleting Event...'}</Button>}
+                        {isAuth && isAuth.user.role === 1 &&  <Button variant="outline-danger" onClick={RemoveEvent} disabled={loading}>{!loading ? 'Delete': 'Deleting Event...'}</Button>}
                     </div>
                     <article className="pt-4">
                     <h2 className="event-detail-headings">Event Description</h2>
@@ -151,7 +150,7 @@ export default function SingleProduct({product,relatedProducts=[]}){
                     <div>
                         <h4 className="event-detail-headings">Related Events</h4>
                         <ul className="list-unstyled related-product-behavior">
-                        {relatedProducts.length == 0 && <SuccessMessage message='No Event Under Category' />}
+                        {relatedProducts.length === 0 && <SuccessMessage message='No Event Under Category' />}
                         {relatedProducts.map((product,index) => (
                             <RelatedProduct key={index} relatedProductDetail={product} />
                         ))}
@@ -162,8 +161,8 @@ export default function SingleProduct({product,relatedProducts=[]}){
                         <h4 className="fw-bold">Archives</h4>
                         <ol className="list-unstyled mb-0">
                         {/*you can add event lister links here */}
-                        <li><a href="#">March 2021</a></li>
-                        <li><a href="#">February 2021</a></li>
+                        <li><Link >March 2021</Link></li>
+                        <li><Link>February 2021</Link></li>
                         </ol>
                     </div>
                     </div>

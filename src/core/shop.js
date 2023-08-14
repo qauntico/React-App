@@ -45,7 +45,7 @@ export default function Shop(){
     function handlefilters(filters, sort){
         const newFilters = {...myFilters};//creates a new  object an pass in the default object
         myFilters.filters[sort] = filters;//sets the sort which can either be product or category to their various arrays i.e updates their state
-        if(sort == 'price'){
+        if(sort === 'price'){
             let priceValue = handlePrice(filters);
             myFilters.filters[sort] = priceValue;
         }
@@ -57,7 +57,7 @@ export default function Shop(){
     function handlePrice(value){
         const data = price;
         for(let i = 0; i < data.length; i++){
-            if(data[i]._id == value){
+            if(data[i]._id === value){
                 return data[i].array
             }
         }

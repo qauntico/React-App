@@ -1,5 +1,4 @@
 import { Col,Row,Button } from "react-bootstrap";
-import CartImage from './HomeImages/card-1.jpg';
 import { removeItem, updateItem } from "./cartHelpers";
 import { useContext, useState } from "react";
 import CartContex from "../Contex/Cart-Contex";

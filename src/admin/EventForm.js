@@ -137,7 +137,7 @@ function EventForm({method, eventFormData}) {
     //handles changes in the form input value
     const valueChange = (e) => {
         const name = e.target.name;
-        const value = name == 'photo' ? e.target.files[0] : e.target.value;//getting the values of the fields
+        const value = name === 'photo' ? e.target.files[0] : e.target.value;//getting the values of the fields
         setProduct(previous => ({
             ...previous,
             [e.target.name]: value
@@ -313,7 +313,7 @@ function EventForm({method, eventFormData}) {
       </Row>
         <Button type="submit" disabled={loading}  variant="secondary" >{loading && method === 'POST' ? 'Creating Event...' : 
                                                                         loading && method === 'PUT' ? 'Editing Event...': 
-                                                                        method == 'POST' ? 'Create Event' : 'Edit Event'}
+                                                                        method === 'POST' ? 'Create Event' : 'Edit Event'}
         </Button>
         </Form>
     </Container>
