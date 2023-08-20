@@ -1,3 +1,6 @@
+# Events Listing Site:
+This is an events listing site where people can list out events and sell their tickets, It's a fully functional MERN Stack app, front end React js and backend mongodb, node js and express a list weight backend technology. This is the link to the site: https://event-listing-46bb7.web.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
