@@ -22,6 +22,7 @@ import {loader as loadCategories} from './admin/EventForm';
 import Orders from './admin/Order';
 import CartProvider from './Contex/CartProvider';
 import { lazy,Suspense } from 'react';
+import EmailVerify from './user/EmailVerify';
 
 const Shop = lazy(() => import('./core/shop'));//using lazy loading on the shop page
 
@@ -35,6 +36,8 @@ function App() {
       {index: true, 
       element: <Home />,
       loader: loadCategories},
+      {path:'/user/:id/verify/:token',
+      element: <EmailVerify />},
       {path: '/shop',
       element: <Suspense fallback={<p>Loading.....</p>}><Shop /></Suspense>,
       loader: () => import('./admin/EventForm').then(module => module.loader())},

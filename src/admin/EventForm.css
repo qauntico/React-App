@@ -58,13 +58,13 @@
     }
 }
 
-@media screen and (max-width: 390px ) {
+@media screen and (max-width: 500px ) {
     .event-heading{
         font-size: 150%;
         font-weight: 700;
         text-align: center;
     }
     .event-image{
-        left: 80px;
+        left: 30px;
     }
 }

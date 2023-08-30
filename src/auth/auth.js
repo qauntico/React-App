@@ -1,15 +1,16 @@
-
+import Cookies from 'js-cookie';
 export async function User(data, action){
-        const response = await fetch(`https://backend-c1rf.onrender.com/api/${action}`, {
+        const response = await fetch(`http://localhost:8080/api/${action}`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(data),
+            credentials: 'include'
             }).catch(err => {
                 console.log(err)
-            });
+            }); 
             const result = await response.json();
             if(response.ok){
                 return result
@@ -42,8 +43,9 @@ export const signout = async (next) => {
         localStorage.removeItem('jwt');
         localStorage.removeItem('expiration');
         next();
-        return fetch('https://backend-c1rf.onrender.com/api/logout', {
+        return fetch('http://localhost:8080/api/logout', {
             method: 'POST',
+            credentials: 'include',
 
         }).then(response => {
             console.log("signout",response)
@@ -62,6 +64,8 @@ export const isAuthenticated = () => {
     //if (tokenDuration < 0) {
         //return false
     //}
+    const isMyCookiePresent = Cookies.get("myCookie");
+    console.log(isMyCookiePresent)
     if(localStorage.getItem('jwt')){
         return localStorage.getItem('jwt')
     }else{
@@ -70,7 +74,7 @@ export const isAuthenticated = () => {
 };
 
 export async function UpdateUserProfile(userId, token,profileData){
-    const response = await fetch(`https://backend-c1rf.onrender.com/api/user/${userId}`, {
+    const response = await fetch(`http://localhost:8080/api/user/${userId}`, {
         method: 'PUT',
         headers: {
             Accept: "application/json",

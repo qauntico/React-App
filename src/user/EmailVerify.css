@@ -1,0 +1,24 @@
+ .validButton{
+    border: none;
+    outline: none;
+    padding: 12px 0;
+    background-color: #3bb19b;
+    border-radius: 20px;
+    width: 180px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+ }
+
+.valid-email{
+    padding-top: 200px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.success_img{
+    height: 200px;
+}

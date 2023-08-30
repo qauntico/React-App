@@ -47,8 +47,7 @@ export default function Signup() {
           setCondition({...condition,loading: true});
           User(data, "signup").then(result => {
             if (result.error){
-                setCondition({...condition, error: result.error})
-                console.log(result.error)
+                setCondition({...condition, error: result.error});
             }else{
                 name.current.value = ""
                 email.current.value = ""
@@ -56,7 +55,7 @@ export default function Signup() {
                 about.current.value = ""
                 confirm_password.current.value=""
                 setValidated(false)
-                setCondition({...condition, error: '', success: result.success})
+                setCondition({...condition, error: '', success: result.success});
             }    
           })
         }
