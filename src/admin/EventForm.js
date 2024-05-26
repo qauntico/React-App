@@ -206,15 +206,12 @@ function EventForm({method, eventFormData}) {
           <Form.Group controlId="endTime">
             <Form.Label>End Time</Form.Label>
             <Form.Control
-              required
               type="time"
               name="endTime"
               value={product.endTime}
               onChange={valueChange}
               placeholder="End Time"
             />
-            <Form.Control.Feedback type="invalid">Please Enter End Time...</Form.Control.Feedback>
-            <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
           </Form.Group>
           <Form.Group controlId="location">
             <Form.Label>Location</Form.Label>
@@ -249,17 +246,12 @@ function EventForm({method, eventFormData}) {
         <Form.Group controlId="validationCustom01">
           <Form.Label>Price For Tickets</Form.Label>
           <Form.Control
-            required
             type="number"
             name='price'
             value={product.price}
             onChange={valueChange}
             placeholder="Product Price"
           />
-          <Form.Control.Feedback type="invalid">
-              Please Enter The Ticket Price
-          </Form.Control.Feedback>
-          <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
         </Form.Group>
         <Form.Group controlId="validationCustom01">
           <Form.Label>Event Category</Form.Label>

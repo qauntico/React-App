@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useRouteLoaderData } from "react-router-dom";
-import SingleProduct from "./ProductDetailPage";
+import SingleProduct from "./productDetailPage";
 import { relatedProduct } from "./apiCore";
 
 

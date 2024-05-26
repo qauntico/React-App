@@ -44,7 +44,7 @@ export default function Menu() {
                 {modalVisibility &&  <Modal visibility={HandleVisibility} />}
                 <Navbar collapseOnSelect expand="lg" className={`${"bg-body-tertiary"} ${classes.container} `} fixed="top">
                     <Container>
-                        <Navbar.Brand ><Link className={classes.logo}>Quantum | Shop</Link></Navbar.Brand>
+                        <Navbar.Brand ><Link className={classes.logo}>EventBeacon</Link></Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="me-auto">

@@ -56,7 +56,7 @@ export default function Home() {
                                 <div className="home-content-data">
                                     <h1>Embrace the Moment: <span>Unite through Amazing Events!</span></h1>
                                     <p>
-                                        Welcome to <span>Quantum|Evnets!</span> , where love unites in celebration! Join us in creating cherished memories and spreading happiness through exciting events. Embrace the joy of togetherness and discover your ticket to unforgettable experiences. Let's make every moment a celebration of love and happiness together!
+                                        Welcome to <span>EventBeacon!</span> , where love unites in celebration! Join us in creating cherished memories and spreading happiness through exciting events. Embrace the joy of togetherness and discover your ticket to unforgettable experiences. Let's make every moment a celebration of love and happiness together!
                                     </p>
                                 </div>
                             </div>

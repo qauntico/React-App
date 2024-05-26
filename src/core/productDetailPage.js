@@ -156,15 +156,6 @@ export default function SingleProduct({product,relatedProducts=[]}){
                         ))}
                         </ul>
                     </div>
-
-                    <div className="p-4">
-                        <h4 className="fw-bold">Archives</h4>
-                        <ol className="list-unstyled mb-0">
-                        {/*you can add event lister links here */}
-                        <li><Link >March 2021</Link></li>
-                        <li><Link>February 2021</Link></li>
-                        </ol>
-                    </div>
                     </div>
                 </div>
                 </div>

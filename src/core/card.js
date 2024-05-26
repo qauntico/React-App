@@ -4,6 +4,7 @@ import { Link,useNavigate } from "react-router-dom";
 import { addItem, updateItem,removeItem } from "./cartHelpers";
 import CartContex from "../Contex/Cart-Contex";
 import moment from "moment";
+import "./card.css"
 
 export default function Cart({product, update = false, showRemoveItemButton = false,setRun = f => f,run = undefined}){
     const data = useContext(CartContex);
@@ -76,9 +77,9 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
                     <div className="d-flex justify-content-between align-items-center">
                     <div className="btn-group">
                         <Link to={`/event/${product._id}`}>
-                            <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                            <button type="button" className="btn btn-sm btn-outline-secondary romove-border">View</button>
                         </Link>
-                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={addToCart}>Get Ticket</button>
+                        <button type="button" className="btn btn-sm btn-outline-secondary romove-border" onClick={addToCart}>Get Ticket</button>
                         </div>
                         <small className="text-body-secondary">{moment(product.createdAt).fromNow()}</small>
                     </div>
