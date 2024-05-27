@@ -2,7 +2,7 @@ export const price = [
     {
         _id: 0,
         name: 'Free',
-        array: [0,900]
+        array: [0,0]
     },
     {
         _id: 1,
