@@ -21,7 +21,7 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
             navigate('/cart')
         }
     }
-    
+    console.log(product)
     const handleChange = productId => event => {
         setRun(!run)
         setCount(event.target.value < 1 ? 1 : event.target.value)
@@ -72,16 +72,16 @@ export default function Cart({product, update = false, showRemoveItemButton = fa
                 </Link>
                 <div className="card-body">
                     <h5 className="card-title">{product.name}</h5>
-                    <h6 className="card-title cart-price">CFA {product.price}</h6>
+                    {product.price > 0 && <h6 className="card-title cart-price">CFA {product.price}</h6> }
                     <p className="card-text">{trimParagraphToTenWords(product.description)}.....</p>
                     <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
+                    <div className="card-button-group">
                         <Link to={`/event/${product._id}`}>
                             <button type="button" className="btn btn-sm btn-outline-secondary romove-border">View</button>
                         </Link>
-                        <button type="button" className="btn btn-sm btn-outline-secondary romove-border" onClick={addToCart}>Get Ticket</button>
-                        </div>
-                        <small className="text-body-secondary">{moment(product.createdAt).fromNow()}</small>
+                        {product.price > 0 && <button type="button" className="btn btn-sm btn-outline-secondary romove-border" onClick={addToCart}>Get Ticket</button>}
+                    </div>
+                        <small className="text-body-secondary small-time-text">{moment(product.createdAt).fromNow()}</small>
                     </div>
                 </div>
             </div>

@@ -123,7 +123,7 @@ export default function SingleProduct({product,relatedProducts=[]}){
                             </Row>
                         </div>
                         <div className="event-detail-buttons">
-                            <button onClick={AddToCart} className="get-tickets">Get Tickets</button>
+                            { product.price > 0  && <button onClick={AddToCart} className="get-tickets">Get Tickets</button>}
                             {isAuth && isAuth.user.role === 1 &&  <Button variant="secondary" className='edit-event' onClick={NavigateToEditEventPage}>Edit Event</Button>}
                         </div>
                         {isAuth && isAuth.user.role === 1 &&  <Button variant="outline-danger" onClick={RemoveEvent} disabled={loading}>{!loading ? 'Delete': 'Deleting Event...'}</Button>}

@@ -158,7 +158,7 @@ export default function Home() {
                         </div>
                         {/*Most purchase events*/}
                         <div className="container px-4 py-5" id="custom-cards">
-                            <h2 className="pb-2 border-bottom home-page-title">Most Purchase Events</h2>
+                            <h2 className="pb-2 border-bottom home-page-title">Most Subscribed Events</h2>
                             <div className="home-items">
                                 {productBySales.map(product => (
                                     <Cart key={product._id} product={product}/>
